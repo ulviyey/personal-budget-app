@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardify.MAUI", "Cardify.MAUI\Cardify.MAUI.csproj", "{1CFC8EF4-982E-4E80-A096-A78F0F521A6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardify.API", "Cardify.API\Cardify.API.csproj", "{6031F0F3-0F47-40BA-A733-320459C04C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardify.Core", "Cardify.Core\Cardify.Core.csproj", "{15AEEDDE-EBF6-43FA-954B-C9B3916A9C6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CFC8EF4-982E-4E80-A096-A78F0F521A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CFC8EF4-982E-4E80-A096-A78F0F521A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CFC8EF4-982E-4E80-A096-A78F0F521A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CFC8EF4-982E-4E80-A096-A78F0F521A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6031F0F3-0F47-40BA-A733-320459C04C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6031F0F3-0F47-40BA-A733-320459C04C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6031F0F3-0F47-40BA-A733-320459C04C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6031F0F3-0F47-40BA-A733-320459C04C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15AEEDDE-EBF6-43FA-954B-C9B3916A9C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AEEDDE-EBF6-43FA-954B-C9B3916A9C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AEEDDE-EBF6-43FA-954B-C9B3916A9C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AEEDDE-EBF6-43FA-954B-C9B3916A9C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
