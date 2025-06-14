@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using Cardify.Core.Services;
+using Cardify.MAUI.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Cardify.MAUI;
 
@@ -18,7 +21,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<ILoginService, MockLoginService>();
 
-		return builder.Build();
+        return builder.Build();
 	}
 }

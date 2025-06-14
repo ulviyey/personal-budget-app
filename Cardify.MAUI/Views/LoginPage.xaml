@@ -1,0 +1,88 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.LoginPage"
+             BackgroundColor="#0f172a"
+             Shell.NavBarIsVisible="False"
+             Padding="32">
+
+    <Grid RowDefinitions="Auto, Auto" 
+          ColumnDefinitions="*, 400, *"
+          VerticalOptions="Center" 
+          HorizontalOptions="Center"
+          RowSpacing="24">
+
+        <!-- Cardify text and subtext-->
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="12" HorizontalOptions="Center">
+            <Label Text="Cardify"
+                   FontSize="36"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="Manage your finances with confidence"
+                   FontSize="16"
+                   TextColor="#94a3b8"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <!-- Login form-->
+        <Border Grid.Row="1" Grid.Column="1"
+                BackgroundColor="#1e293b"
+                Stroke="#334155"
+                StrokeShape="RoundRectangle 16"
+                Padding="32"
+                Margin="0">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Email -->
+                <VerticalStackLayout>
+                    <Label Text="Email" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="EmailEntry" Placeholder="Enter your email" TextColor="White" FontSize="14"/>
+                </VerticalStackLayout>
+
+                <!-- Password -->
+                <VerticalStackLayout>
+                    <Label Text="Password" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="PasswordEntry" Placeholder="Enter your password" IsPassword="True" TextColor="White" FontSize="14"/>
+                </VerticalStackLayout>
+
+                <!-- General Error -->
+                <Label x:Name="GeneralErrorLabel"
+                       IsVisible="False"
+                       TextColor="#f87171"
+                       BackgroundColor="#f871711a"
+                       Padding="10"
+                       FontSize="13"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Sign In -->
+                <Button x:Name="LoginButton"
+                        Text="Sign In"
+                        BackgroundColor="#2563eb"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        HeightRequest="50"
+                        Clicked="OnLoginClicked" />
+
+                <!-- Forgot Password -->
+                <Label Text="Forgot your password?"
+                       TextColor="#60a5fa"
+                       FontSize="13"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Demo Credentials -->
+                <Border BackgroundColor="#1e293b"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="14"
+                        Margin="0,12,0,0">
+                    <VerticalStackLayout>
+                        <Label Text="Demo Credentials:" TextColor="#cbd5e1" FontSize="13" />
+                        <Label Text="Email: john.doe@example.com" TextColor="#94a3b8" FontSize="11" />
+                        <Label Text="Password: password" TextColor="#94a3b8" FontSize="11" />
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

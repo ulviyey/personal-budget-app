@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cardify.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7f057937fc69a8ee15a76730631d949f109ffa9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cardify.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cardify.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
