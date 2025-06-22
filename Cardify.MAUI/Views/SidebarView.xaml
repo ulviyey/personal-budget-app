@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.SidebarView"
+             x:Name="ThisSidebarView"
+             BackgroundColor="#FFFFFF">
+
+    <VerticalStackLayout Spacing="0" Padding="15">
+        <!-- Logo/App Title Section -->
+        <Border Margin="0,0,0,20"
+                Padding="15"
+                Background="#6366F1"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="0"
+                >
+            <Label Text="Cardify"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" />
+        </Border>
+
+        <!-- Navigation Items -->
+        <VerticalStackLayout Spacing="5">
+            <!-- Overview Button -->
+            <Border x:Name="OverviewBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="OverviewButton" Text="Overview" Clicked="OnSectionButtonClicked" CommandParameter="overview"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Cards Button -->
+            <Border x:Name="CardsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="CardsButton" Text="Cards" Clicked="OnSectionButtonClicked" CommandParameter="cards"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Transactions Button -->
+            <Border x:Name="TransactionsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="TransactionsButton" Text="Transactions" Clicked="OnSectionButtonClicked" CommandParameter="transactions"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Accounts Button -->
+            <Border x:Name="AccountsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="AccountsButton" Text="Accounts" Clicked="OnSectionButtonClicked" CommandParameter="accounts"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Analytics Button -->
+            <Border x:Name="AnalyticsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="AnalyticsButton" Text="Analytics" Clicked="OnSectionButtonClicked" CommandParameter="analytics"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Investments Button -->
+            <Border x:Name="InvestmentsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="InvestmentsButton" Text="Investments" Clicked="OnSectionButtonClicked" CommandParameter="investments"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+
+            <!-- Settings Button -->
+            <Border x:Name="SettingsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
+                <Button x:Name="SettingsButton" Text="Settings" Clicked="OnSectionButtonClicked" CommandParameter="settings"
+                        BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            </Border>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentView>

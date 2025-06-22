@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cardify.MAUI.Views.LoginPage"
+             x:Class="Cardify.MAUI.Pages.LoginPage"
              BackgroundColor="#0f172a"
              Shell.NavBarIsVisible="False"
              Padding="32">

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PXr9IzRuxC0=",
+  "dgSpecHash": "gXeHdY35Iq4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Pasora\\.nuget\\packages\\microcharts.maui\\1.0.0\\microcharts.maui.1.0.0.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0\\microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0\\microsoft.extensions.dependencyinjection.9.0.0.nupkg.sha512",
@@ -27,6 +28,12 @@
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.web.webview2\\1.0.2903.40\\microsoft.web.webview2.1.0.2903.40.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.250205002\\microsoft.windowsappsdk.1.6.250205002.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp\\2.88.3\\skiasharp.2.88.3.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.3\\skiasharp.nativeassets.macos.2.88.3.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.3\\skiasharp.nativeassets.win32.2.88.3.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp.views.maui.controls\\2.88.3\\skiasharp.views.maui.controls.2.88.3.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp.views.maui.core\\2.88.3\\skiasharp.views.maui.core.2.88.3.nupkg.sha512",
+    "C:\\Users\\Pasora\\.nuget\\packages\\skiasharp.views.winui\\2.88.3\\skiasharp.views.winui.2.88.3.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512"
   ],
   "logs": []

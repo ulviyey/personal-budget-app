@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.OverviewView">
+    <VerticalStackLayout Spacing="25">
+        <!-- Header -->
+        <VerticalStackLayout>
+            <Label Text="Financial Overview"
+                    FontSize="22" FontAttributes="Bold" TextColor="#1F2937" />
+           
+            <Label Text="Welcome back! Here's your financial summary."
+                    FontSize="14" TextColor="#4B5563" />
+        </VerticalStackLayout>
+            
+        <!-- Stats Grid -->
+        <Grid x:Name="StatsGrid"
+              ColumnDefinitions="*,*,*,*"
+              ColumnSpacing="15" RowSpacing="15">
+            <!-- Stats items will be added here dynamically -->
+        </Grid>
+
+        <!-- Main Content Grid -->
+        <Grid ColumnDefinitions="2*,*" ColumnSpacing="15">
+            <!-- Recent Transactions -->
+            <Border Grid.Column="0"
+                    Background="#FFFFFF"
+                    Stroke="#E5E7EB" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10" Padding="20">
+                <VerticalStackLayout Spacing="20">
+                    <HorizontalStackLayout VerticalOptions="Center">
+                        <Label Text="Recent Transactions"
+                               FontSize="18" TextColor="#1F2937" />
+                        <Button Text="View All"
+                                BackgroundColor="Transparent"
+                                TextColor="#2563EB" FontSize="14"
+                                Padding="0" BorderWidth="0" />
+                    </HorizontalStackLayout>
+                    <!-- Transactions will be added here dynamically -->
+                    <VerticalStackLayout x:Name="RecentTransactionsLayout" Spacing="10" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Accounts Summary -->
+            <Border Grid.Column="1"
+                    Background="#FFFFFF"
+                    Stroke="#E5E7EB" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10" Padding="20">
+                <VerticalStackLayout Spacing="20">
+                    <HorizontalStackLayout VerticalOptions="Center">
+                        <Label Text="Accounts"
+                               FontSize="18" TextColor="#1F2937" />
+                        <Label Text="🏦" FontSize="18" TextColor="#9CA3AF" />
+                    </HorizontalStackLayout>
+                    <VerticalStackLayout x:Name="AccountsLayout" Spacing="10" />
+                    <Button Text="Add Account"
+                            BackgroundColor="#2563EB" TextColor="White"
+                            CornerRadius="8" Padding="15,10"
+                            FontSize="16"
+                            />
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <!-- Quick Actions -->
+        <Border Background="#FFFFFF"
+                Stroke="#E5E7EB" StrokeThickness="1"
+                StrokeShape="RoundRectangle 10" Padding="20">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Quick Actions"
+                       FontSize="18" TextColor="#1F2937" />
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="15">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#EFF6FF" StrokeShape="RoundRectangle 8" StrokeThickness="0"
+                            Padding="20,15">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="💳" FontSize="24" TextColor="#2563EB" HorizontalOptions="Center" />
+                            <Label Text="Add Card" HorizontalOptions="Center" FontSize="14" TextColor="#1D4ED8" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1"
+                            BackgroundColor="#ECFDF5" StrokeShape="RoundRectangle 8" StrokeThickness="0"
+                            Padding="20,15">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="⬆️" FontSize="24" TextColor="#059669" HorizontalOptions="Center" />
+                            <Label Text="Add Income" HorizontalOptions="Center" FontSize="14" TextColor="#065F46" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2"
+                            BackgroundColor="#FEF2F2" StrokeShape="RoundRectangle 8" StrokeThickness="0"
+                            Padding="20,15">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="⬇️" FontSize="24" TextColor="#DC2626" HorizontalOptions="Center" />
+                            <Label Text="Add Expense" HorizontalOptions="Center" FontSize="14" TextColor="#991B1B" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="3"
+                            BackgroundColor="#F5EEFF" StrokeShape="RoundRectangle 8" StrokeThickness="0"
+                            Padding="20,15">
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="🏦" FontSize="24" TextColor="#7C3AED" HorizontalOptions="Center" />
+                            <Label Text="Link Bank" HorizontalOptions="Center" FontSize="14" TextColor="#5B21B6" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentView>

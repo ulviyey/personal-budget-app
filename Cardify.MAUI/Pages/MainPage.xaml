@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:local="clr-namespace:Cardify.MAUI.Views"
+             x:Class="Cardify.MAUI.Pages.MainPage"  
+             Title="MainPage"  
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F9FAFB">  
+
+    <Grid ColumnDefinitions="250,*" RowDefinitions="*">  
+
+        <!-- Left Sidebar - positioned in the first column -->  
+        <!-- The SidebarView will communicate via events, and MainPage will update its ActiveSection property -->  
+        <local:SidebarView Grid.Column="0"  
+                           SectionSelected="OnSectionSelected"  
+                           x:Name="SidebarNav" />  
+        <!-- Added x:Name to access from code-behind -->  
+
+        <!-- Main Content Area - positioned in the second column -->  
+        <ScrollView Grid.Column="1" Padding="20">  
+            <VerticalStackLayout Spacing="0">  
+                <!-- Each section needs an x:Name to be toggled from code-behind -->  
+                <local:OverviewView x:Name="OverviewSection" IsVisible="True" />  
+                <!--<local:CardsView x:Name="CardsSection" IsVisible="False" />  
+                <local:TransactionsView x:Name="TransactionsSection" IsVisible="False" />  
+                <local:AccountsView x:Name="AccountsSection" IsVisible="False" />  
+                <local:AnalyticsView x:Name="AnalyticsSection" IsVisible="False" />-->  
+
+                <!-- Investments Section (Placeholder) -->  
+                <Border x:Name="InvestmentsSection" IsVisible="False"  
+                        Padding="20"  
+                        Background="#FFFFFF"  
+                        StrokeShape="RoundRectangle 10"  
+                        StrokeThickness="0"  
+                        Margin="0,0,0,10">  
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">  
+                        <Label Text="Investments"  
+                               FontSize="22"  
+                               FontAttributes="Bold"  
+                               TextColor="#1F2937" />  
+                        <Label Text="Investment tracking coming soon..."  
+                               FontSize="16"  
+                               TextColor="#4B5563" />  
+                    </VerticalStackLayout>  
+                </Border>  
+
+                <!-- Settings Section (Placeholder) -->  
+                <Border x:Name="SettingsSection" IsVisible="False"  
+                        Padding="20"  
+                        Background="#FFFFFF"  
+                        StrokeShape="RoundRectangle 10"  
+                        StrokeThickness="0">  
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">  
+                        <Label Text="Settings"  
+                               FontSize="22"  
+                               FontAttributes="Bold"  
+                               TextColor="#1F2937" />  
+                        <Label Text="Settings panel coming soon..."  
+                               FontSize="16"  
+                               TextColor="#4B5563" />  
+                    </VerticalStackLayout>  
+                </Border>  
+            </VerticalStackLayout>  
+        </ScrollView>  
+    </Grid>  
+</ContentPage>

@@ -10,6 +10,7 @@
       "Cardify.MAUI/1.0": {
         "dependencies": {
           "Cardify.Core": "1.0.0",
+          "Microcharts.Maui": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "9.0.0",
           "Microsoft.Maui.Controls": "9.0.51",
           "Microsoft.Web.WebView2.Core.Projection": "1.0.2903.40",
@@ -28,6 +29,17 @@
           "WinRT.Runtime.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.48161"
+          }
+        }
+      },
+      "Microcharts.Maui/1.0.0": {
+        "dependencies": {
+          "SkiaSharp.Views.Maui.Controls": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/Microcharts.Maui.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -442,6 +454,61 @@
           }
         }
       },
+      "SkiaSharp/2.88.3": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.3",
+          "SkiaSharp.NativeAssets.macOS": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.3": {},
+      "SkiaSharp.NativeAssets.Win32/2.88.3": {
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Maui.Controls/2.88.3": {
+        "dependencies": {
+          "SkiaSharp.Views.Maui.Core": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.18362.0/SkiaSharp.Views.Maui.Controls.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Maui.Core/2.88.3": {
+        "dependencies": {
+          "SkiaSharp": "2.88.3",
+          "SkiaSharp.Views.WinUI": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.18362.0/SkiaSharp.Views.Maui.Core.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.WinUI/2.88.3": {
+        "dependencies": {
+          "Microsoft.WindowsAppSDK": "1.6.250205002",
+          "SkiaSharp": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041.0/SkiaSharp.Views.Windows.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
       "Cardify.Core/1.0.0": {
         "runtime": {
           "Cardify.Core.dll": {
@@ -470,6 +537,13 @@
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microcharts.Maui/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q7FWgkWSA44vgg5N9Nd4KdwoMflcAPYZ7VHqnjetcWu2z4EUx/75OgVqDJeP9WDmHC+hU4BPOyhnPhkS4+1RBg==",
+      "path": "microcharts.maui/1.0.0",
+      "hashPath": "microcharts.maui.1.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/9.0.0": {
       "type": "package",
@@ -631,6 +705,48 @@
       "sha512": "sha512-zcOHaqII9erAmn3w3MP5rSmBzWf/IC8yU4nPCtwDquhy3vadW6Pm/0lOvnOCcZNN6TztPPODl9CQqDKSAGCeHQ==",
       "path": "microsoft.windowsappsdk/1.6.250205002",
       "hashPath": "microsoft.windowsappsdk.1.6.250205002.nupkg.sha512"
+    },
+    "SkiaSharp/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GG8X3EdfwyBfwjl639UIiOVOKEdeoqDgYrz0P1MUCnefXt9cofN+AK8YB/v1+5cLMr03ieWCQdDmPqnFIzSxZw==",
+      "path": "skiasharp/2.88.3",
+      "hashPath": "skiasharp.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CEbWAXMGFkPV3S1snBKK7jEG3+xud/9kmSAhu0BEUKKtlMdxx+Qal0U9bntQREM9QpqP5xLWZooodi8IlV8MEg==",
+      "path": "skiasharp.nativeassets.macos/2.88.3",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MU4ASL8VAbTv5vSw1PoiWjjjpjtGhWtFYuJnrN4sNHFCePb2ohQij9JhSdqLLxk7RpRtWPdV93fbA53Pt+J0yw==",
+      "path": "skiasharp.nativeassets.win32/2.88.3",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Maui.Controls/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fvnvZdfWFYrptu37ul9/rT3QOdhrSUrMrBsHWcDpanVM04KOpHBWJDv/LEsD0jp1rE7TPIXXQk1RXutfXSYveg==",
+      "path": "skiasharp.views.maui.controls/2.88.3",
+      "hashPath": "skiasharp.views.maui.controls.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Maui.Core/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kP7m/DxrGeitgaN9hU7UmOeV4mRMfKdRf+z/SrAJhk2PXJSQJr3jnpBIBr3STTCkWBOuPzw0svQhwonrI2rj5g==",
+      "path": "skiasharp.views.maui.core/2.88.3",
+      "hashPath": "skiasharp.views.maui.core.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.WinUI/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lFMAUZfh8ALYwrdEHNBoFPb1gd9+cOG0nWMvixXPjvGZezEBQIb17W2d9Wr4/zd4w049qA2iH5bQFbeK8S7iQw==",
+      "path": "skiasharp.views.winui/2.88.3",
+      "hashPath": "skiasharp.views.winui.2.88.3.nupkg.sha512"
     },
     "Cardify.Core/1.0.0": {
       "type": "project",

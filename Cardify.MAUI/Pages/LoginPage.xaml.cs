@@ -1,6 +1,6 @@
 using Cardify.Core.Services;
 
-namespace Cardify.MAUI.Views;
+namespace Cardify.MAUI.Pages;
 
 public partial class LoginPage : ContentPage
 {
@@ -38,7 +38,7 @@ public partial class LoginPage : ContentPage
             var success = await _loginService.LoginAsync(email, password);
             if (success)
             {
-                await Shell.Current.GoToAsync("//dashboard");
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
             }
             else
             {

@@ -34,11 +34,17 @@ build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/MainPage.xaml]
+[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Pages/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.MainPage.xaml
-build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
-build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Pages.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\LoginPage.xaml
+
+[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Pages/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Pages.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
 
 [C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -52,8 +58,14 @@ build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Resources.Sty
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/LoginPage.xaml]
+[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/OverviewView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.LoginPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.OverviewView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\OverviewView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\OverviewView.xaml
+
+[C:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/SidebarView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SidebarView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SidebarView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SidebarView.xaml
