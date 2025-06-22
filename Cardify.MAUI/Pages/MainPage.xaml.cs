@@ -34,7 +34,7 @@ namespace Cardify.MAUI.Pages
         {
             // Hide all sections first
             OverviewSection.IsVisible = false;
-            //CardsSection.IsVisible = false;
+            CardsSection.IsVisible = false;
             //TransactionsSection.IsVisible = false;
             //AccountsSection.IsVisible = false;
             //AnalyticsSection.IsVisible = false;
@@ -47,9 +47,9 @@ namespace Cardify.MAUI.Pages
                 case "overview":
                     OverviewSection.IsVisible = true;
                     break;
-                //case "cards":
-                //    CardsSection.IsVisible = true;
-                //    break;
+                case "cards":
+                    CardsSection.IsVisible = true;
+                    break;
                 //case "transactions":
                 //    TransactionsSection.IsVisible = true;
                 //    break;

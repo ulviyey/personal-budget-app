@@ -1,3 +1,5 @@
+using Cardify.MAUI.Pages;
+
 namespace Cardify.MAUI.Views
 {
     // Define a delegate for the custom event
@@ -37,6 +39,8 @@ namespace Cardify.MAUI.Views
             }
         }
 
+        private async void OnLogoutClicked(object sender, EventArgs e) => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+
         /// <summary>
         /// Updates the visual appearance of the sidebar to highlight the active section.
         /// </summary>
@@ -68,36 +72,36 @@ namespace Cardify.MAUI.Views
                     _lastActiveBorder = CardsBorder;
                     _lastActiveButton = CardsButton;
                     break;
-                case "transactions":
-                    TransactionsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    TransactionsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = TransactionsBorder;
-                    _lastActiveButton = TransactionsButton;
-                    break;
-                case "accounts":
-                    AccountsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    AccountsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = AccountsBorder;
-                    _lastActiveButton = AccountsButton;
-                    break;
-                case "analytics":
-                    AnalyticsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    AnalyticsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = AnalyticsBorder;
-                    _lastActiveButton = AnalyticsButton;
-                    break;
-                case "investments":
-                    InvestmentsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    InvestmentsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = InvestmentsBorder;
-                    _lastActiveButton = InvestmentsButton;
-                    break;
-                case "settings":
-                    SettingsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    SettingsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = SettingsBorder;
-                    _lastActiveButton = SettingsButton;
-                    break;
+                    //case "transactions":
+                    //    TransactionsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
+                    //    TransactionsButton.TextColor = Color.FromArgb("#4338CA");
+                    //    _lastActiveBorder = TransactionsBorder;
+                    //    _lastActiveButton = TransactionsButton;
+                    //    break;
+                    //case "accounts":
+                    //    AccountsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
+                    //    AccountsButton.TextColor = Color.FromArgb("#4338CA");
+                    //    _lastActiveBorder = AccountsBorder;
+                    //    _lastActiveButton = AccountsButton;
+                    //    break;
+                    //case "analytics":
+                    //    AnalyticsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
+                    //    AnalyticsButton.TextColor = Color.FromArgb("#4338CA");
+                    //    _lastActiveBorder = AnalyticsBorder;
+                    //    _lastActiveButton = AnalyticsButton;
+                    //    break;
+                    //case "investments":
+                    //    InvestmentsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
+                    //    InvestmentsButton.TextColor = Color.FromArgb("#4338CA");
+                    //    _lastActiveBorder = InvestmentsBorder;
+                    //    _lastActiveButton = InvestmentsButton;
+                    //    break;
+                    //case "settings":
+                    //    SettingsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
+                    //    SettingsButton.TextColor = Color.FromArgb("#4338CA");
+                    //    _lastActiveBorder = SettingsBorder;
+                    //    _lastActiveButton = SettingsButton;
+                    //    break;
             }
         }
     }

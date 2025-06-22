@@ -35,10 +35,10 @@ namespace Cardify.MAUI.Views
     public partial class OverviewView : ContentView
     {
         // List to hold references to all balance-displaying labels for easy toggling
-        private List<Label> _balanceLabels = [];
+        private readonly List<Label> _balanceLabels = [];
 
         // Hardcoded Data (as per React example)
-        private List<StatData> _stats =
+        private readonly List<StatData> _stats =
         [
             new StatData { Label = "Total Balance", Value = 24567.89, Change = "+12.5%", Trend = "up", IconChar = "$", Color = Colors.Blue },
             new StatData { Label = "Monthly Income", Value = 8450.00, Change = "+5.2%", Trend = "up", IconChar = "⬆️", Color = Colors.Green },
@@ -46,7 +46,7 @@ namespace Cardify.MAUI.Views
             new StatData { Label = "Active Cards", Value = 6, Change = "+1", Trend = "up", IconChar = "💳", Color = Colors.Purple }
         ];
 
-        private List<TransactionData> _recentTransactions =
+        private readonly List<TransactionData> _recentTransactions =
         [
             new TransactionData { Id = 1, Description = "Salary Payment", Amount = 5000, Type = "income", Date = "2024-01-15", Category = "Salary" },
             new TransactionData { Id = 2, Description = "Grocery Store", Amount = -156.78, Type = "expense", Date = "2024-01-14", Category = "Food" },
@@ -55,7 +55,7 @@ namespace Cardify.MAUI.Views
             new TransactionData { Id = 5, Description = "Gas Station", Amount = -45.20, Type = "expense", Date = "2024-01-13", Category = "Transportation" }
         ];
 
-        private List<AccountData> _accounts =
+        private readonly List<AccountData> _accounts =
         [
             new AccountData { Name = "Chase Checking", Balance = 12456.78, Type = "checking", Bank = "Chase" },
             new AccountData { Name = "Savings Account", Balance = 8901.23, Type = "savings", Bank = "Bank of America" },

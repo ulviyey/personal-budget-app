@@ -60,6 +60,9 @@
     <MauiXaml Update="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
+    <MauiXaml Update="Views\CardsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
     <MauiXaml Update="Views\OverviewView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>

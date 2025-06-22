@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8" ?>  
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Cardify.MAUI.Views"
-             x:Class="Cardify.MAUI.Pages.MainPage"  
-             Title="MainPage"  
+             x:Class="Cardify.MAUI.Pages.MainPage"
+             Title="MainPage"
              Shell.NavBarIsVisible="False"
-             BackgroundColor="#F9FAFB">  
+             BackgroundColor="#F9FAFB">
 
     <Grid ColumnDefinitions="250,*" RowDefinitions="*">  
 
         <!-- Left Sidebar - positioned in the first column -->  
         <!-- The SidebarView will communicate via events, and MainPage will update its ActiveSection property -->  
-        <local:SidebarView Grid.Column="0"  
+        <local:SidebarView Grid.Column="0"
                            SectionSelected="OnSectionSelected"  
                            x:Name="SidebarNav" />  
         <!-- Added x:Name to access from code-behind -->  
@@ -21,8 +21,8 @@
             <VerticalStackLayout Spacing="0">  
                 <!-- Each section needs an x:Name to be toggled from code-behind -->  
                 <local:OverviewView x:Name="OverviewSection" IsVisible="True" />  
-                <!--<local:CardsView x:Name="CardsSection" IsVisible="False" />  
-                <local:TransactionsView x:Name="TransactionsSection" IsVisible="False" />  
+                <local:CardsView x:Name="CardsSection" IsVisible="False" />  
+                <!--<local:TransactionsView x:Name="TransactionsSection" IsVisible="False" />  
                 <local:AccountsView x:Name="AccountsSection" IsVisible="False" />  
                 <local:AnalyticsView x:Name="AnalyticsSection" IsVisible="False" />-->  
 

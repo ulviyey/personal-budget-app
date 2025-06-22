@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cardify.MAUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6e8aaac02ef6f55e06cc78031b19176412465d40")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2d87200c2adf32762f3c6b8c2d869d94f4777197")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cardify.MAUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cardify.MAUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

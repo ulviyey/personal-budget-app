@@ -11,7 +11,7 @@ namespace Cardify.Core.Models
         public decimal TotalBalance { get; set; }
         public decimal MonthlyIncome { get; set; }
         public decimal MonthlyExpenses { get; set; }
-        public List<MonthlyData> MonthlyData { get; set; } = new List<MonthlyData>();
+        public List<MonthlyData> MonthlyData { get; set; } = [];
 
     }
 }
