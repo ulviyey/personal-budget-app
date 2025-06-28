@@ -19,25 +19,37 @@ namespace Cardify.MAUI.Services
                 var userId = ApiLoginService.CurrentUserId;
                 if (userId == null)
                 {
+                    System.Diagnostics.Debug.WriteLine("Dashboard service: User not logged in");
                     return null;
                 }
 
-                var response = await _httpClient.GetAsync($"{_baseUrl}/dashboard/{userId}");
+                System.Diagnostics.Debug.WriteLine($"Dashboard service: Calling API for user {userId}");
+                var response = await _httpClient.GetAsync($"{_baseUrl}/dashboard?userId={userId}");
+                
+                System.Diagnostics.Debug.WriteLine($"Dashboard service: Response status: {response.StatusCode}");
                 
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
+                    System.Diagnostics.Debug.WriteLine($"Dashboard service: Response content: {responseContent}");
+                    
                     var result = JsonSerializer.Deserialize<DashboardData>(responseContent, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
                     return result;
                 }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    System.Diagnostics.Debug.WriteLine($"Dashboard service: Error response: {errorContent}");
+                }
                 
                 return null;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Dashboard service exception: {ex.Message}");
                 return null;
             }
         }
@@ -49,7 +61,6 @@ namespace Cardify.MAUI.Services
             public double MonthlyExpenses { get; set; }
             public int ActiveCards { get; set; }
             public List<TransactionData> RecentTransactions { get; set; } = new();
-            public List<CardData> Cards { get; set; } = new();
         }
 
         public class TransactionData
@@ -59,14 +70,6 @@ namespace Cardify.MAUI.Services
             public double Amount { get; set; }
             public string TransactionDate { get; set; } = string.Empty;
             public string Category { get; set; } = string.Empty;
-        }
-
-        public class CardData
-        {
-            public int Id { get; set; }
-            public string CardNumber { get; set; } = string.Empty;
-            public string CardHolder { get; set; } = string.Empty;
-            public string CardType { get; set; } = string.Empty;
         }
     }
 } 

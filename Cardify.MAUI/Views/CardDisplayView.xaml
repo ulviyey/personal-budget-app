@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.CardDisplayView">
+    
+    <Border HeightRequest="120"
+            Stroke="#E5E7EB"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 8"
+            Margin="0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{Binding CardColorStart}" Offset="0.0"/>
+                <GradientStop Color="{Binding CardColorEnd}" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <Grid RowDefinitions="Auto,*,Auto" 
+              ColumnDefinitions="*,Auto"
+              Padding="12">
+            
+            <!-- Card Type -->
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="{Binding CardType}"
+                   FontSize="10"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Opacity="0.9"/>
+            
+            <!-- Card Number -->
+            <Label Grid.Row="1" Grid.Column="0"
+                   Text="{Binding CardNumber}"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+            
+            <!-- Card Holder Name -->
+            <Label Grid.Row="2" Grid.Column="0"
+                   Text="{Binding CardHolder}"
+                   FontSize="12"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Opacity="0.9"/>
+            
+            <!-- Card Icon -->
+            <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"
+                   Text="💳"
+                   FontSize="24"
+                   TextColor="White"
+                   Opacity="0.7"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        </Grid>
+    </Border>
+    
+</ContentView> 

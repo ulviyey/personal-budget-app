@@ -22,14 +22,13 @@ namespace Cardify.MAUI.Views
                 {
                     UpdateStats(dashboardData);
                     PopulateTransactions(dashboardData.RecentTransactions);
-                    PopulateCards(dashboardData.Cards);
                 }
                 else
                 {
                     ShowEmptyState();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 ShowEmptyState();
             }
@@ -126,85 +125,6 @@ namespace Cardify.MAUI.Views
             return card;
         }
 
-        private void PopulateCards(List<ApiDashboardService.CardData> cards)
-        {
-            CardsContainer.Children.Clear();
-
-            if (!cards.Any())
-            {
-                var emptyLabel = new Label
-                {
-                    Text = "No cards added yet. Add some cards to see them here.",
-                    TextColor = Color.FromArgb("#6B7280"),
-                    HorizontalOptions = LayoutOptions.Center,
-                    HorizontalTextAlignment = TextAlignment.Center
-                };
-                CardsContainer.Children.Add(emptyLabel);
-                return;
-            }
-
-            foreach (var card in cards)
-            {
-                var cardCard = CreateCardCard(card);
-                CardsContainer.Children.Add(cardCard);
-            }
-        }
-
-        private Border CreateCardCard(ApiDashboardService.CardData card)
-        {
-            var cardElement = new Border
-            {
-                Background = Color.FromArgb("#F9FAFB"),
-                StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(6) },
-                Padding = 12,
-                StrokeThickness = 0
-            };
-
-            var layout = new Grid
-            {
-                ColumnDefinitions = new ColumnDefinitionCollection
-                {
-                    new ColumnDefinition { Width = GridLength.Star },
-                    new ColumnDefinition { Width = GridLength.Auto }
-                }
-            };
-
-            var cardInfoLayout = new VerticalStackLayout
-            {
-                Spacing = 4
-            };
-            cardInfoLayout.Add(new Label
-            {
-                Text = card.CardHolder,
-                FontSize = 14,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Color.FromArgb("#1F2937")
-            });
-            cardInfoLayout.Add(new Label
-            {
-                Text = $"**** **** **** {card.CardNumber.Substring(Math.Max(0, card.CardNumber.Length - 4))}",
-                FontSize = 12,
-                TextColor = Color.FromArgb("#6B7280")
-            });
-
-            var cardTypeLabel = new Label
-            {
-                Text = card.CardType,
-                FontSize = 12,
-                TextColor = Color.FromArgb("#6B7280"),
-                VerticalOptions = LayoutOptions.Center
-            };
-
-            Grid.SetColumn(cardInfoLayout, 0);
-            Grid.SetColumn(cardTypeLabel, 1);
-
-            layout.Add(cardInfoLayout);
-            layout.Add(cardTypeLabel);
-
-            cardElement.Content = layout;
-            return cardElement;
-        }
-
         private void ShowEmptyState()
         {
             TotalCardsLabel.Text = "0";
@@ -213,7 +133,6 @@ namespace Cardify.MAUI.Views
             MonthlyExpensesLabel.Text = "$0.00";
             
             TransactionsContainer.Children.Clear();
-            CardsContainer.Children.Clear();
             
             var emptyLabel = new Label
             {

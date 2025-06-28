@@ -70,38 +70,32 @@ public partial class CardsView : ContentView
         CardsListGrid.IsVisible = true;
     }
 
-    private async void OnEditCardClicked(object sender, EventArgs e)
+    private async void OnEditCardClicked(object sender, Card card)
     {
-        if (sender is Button button && button.BindingContext is Card card)
-        {
-            // Show the Add Card view in edit mode
-            AddCardView.SetEditMode(card);
-            CardsListGrid.IsVisible = false;
-            AddCardView.IsVisible = true;
-        }
+        // Show the Add Card view in edit mode
+        AddCardView.SetEditMode(card);
+        CardsListGrid.IsVisible = false;
+        AddCardView.IsVisible = true;
     }
 
-    private async void OnDeleteCardClicked(object sender, EventArgs e)
+    private async void OnDeleteCardClicked(object sender, Card card)
     {
-        if (sender is Button button && button.BindingContext is Card card)
-        {
-            var result = await Application.Current.Windows[0].Page.DisplayAlert(
-                "Delete Card", 
-                $"Are you sure you want to delete '{card.CardHolderName}'?", 
-                "Delete", "Cancel");
+        var result = await Application.Current.Windows[0].Page.DisplayAlert(
+            "Delete Card", 
+            $"Are you sure you want to delete '{card.CardHolderName}'?", 
+            "Delete", "Cancel");
 
-            if (result)
+        if (result)
+        {
+            try
             {
-                try
-                {
-                    await _cardService.DeleteCardAsync(card.Id);
-                    Cards.Remove(card); // Remove from the collection
-                    await Application.Current.Windows[0].Page.DisplayAlert("Success", "Card deleted successfully!", "OK");
-                }
-                catch (Exception ex)
-                {
-                    await Application.Current.Windows[0].Page.DisplayAlert("Error", "Failed to delete card: " + ex.Message, "OK");
-                }
+                await _cardService.DeleteCardAsync(card.Id);
+                Cards.Remove(card); // Remove from the collection
+                await Application.Current.Windows[0].Page.DisplayAlert("Success", "Card deleted successfully!", "OK");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.Windows[0].Page.DisplayAlert("Error", "Failed to delete card: " + ex.Message, "OK");
             }
         }
     }

@@ -36,75 +36,8 @@
                 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border HeightRequest="200"
-                                Stroke="#E5E7EB"
-                                StrokeThickness="1"
-                                StrokeShape="RoundRectangle 12"
-                                Margin="0">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="{Binding CardColorStart}" Offset="0.0"/>
-                                    <GradientStop Color="{Binding CardColorEnd}" Offset="1.0"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            
-                            <Grid RowDefinitions="Auto,*,Auto,Auto,Auto" 
-                                  Padding="20">
-                                
-                                <!-- Card Type -->
-                                <Label Grid.Row="0" 
-                                       Text="{Binding CardType}"
-                                       FontSize="12"
-                                       TextColor="White"
-                                       FontAttributes="Bold"
-                                       Opacity="0.9"/>
-                                
-                                <!-- Card Number (moved to middle) -->
-                                <Label Grid.Row="2"
-                                       Text="{Binding MaskedNumber}"
-                                       FontSize="20"
-                                       FontAttributes="Bold"
-                                       TextColor="White"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       Margin="0,10"/>
-                                
-                                <!-- Card Holder Name (moved below number) -->
-                                <Label Grid.Row="3"
-                                       Text="{Binding CardHolderName}"
-                                       FontSize="14"
-                                       TextColor="White"
-                                       FontAttributes="Bold"
-                                       Opacity="0.9"
-                                       Margin="0,5,0,0"/>
-                                
-                                <!-- Action Buttons -->
-                                <HorizontalStackLayout Grid.Row="4"
-                                                       Spacing="8"
-                                                       HorizontalOptions="End"
-                                                       VerticalOptions="End"
-                                                       Margin="0,10,0,0">
-                                    
-                                    <Button Text="Edit"
-                                            BackgroundColor="#FFFFFF"
-                                            TextColor="#374151"
-                                            FontSize="10"
-                                            Padding="8,4"
-                                            CornerRadius="4"
-                                            Opacity="0.9"
-                                            Clicked="OnEditCardClicked"/>
-                                    
-                                    <Button Text="Delete"
-                                            BackgroundColor="#EF4444"
-                                            TextColor="White"
-                                            FontSize="10"
-                                            Padding="8,4"
-                                            CornerRadius="4"
-                                            Opacity="0.9"
-                                            Clicked="OnDeleteCardClicked"/>
-                                </HorizontalStackLayout>
-                            </Grid>
-                        </Border>
+                        <views:CardItemView EditCardClicked="OnEditCardClicked"
+                                           DeleteCardClicked="OnDeleteCardClicked"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 
