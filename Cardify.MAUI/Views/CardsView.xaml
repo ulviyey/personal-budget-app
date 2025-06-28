@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.CardsView">
+    <Grid RowDefinitions="Auto,*,Auto" 
+          ColumnDefinitions="*,Auto"
+          Padding="20"
+          RowSpacing="20">
+        
+        <!-- Header -->
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Spacing="10">
+            <Label Text="My Cards" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   TextColor="#1F2937"/>
+            <Label Text="Manage your credit and debit cards" 
+                   FontSize="16" 
+                   TextColor="#6B7280"/>
+        </VerticalStackLayout>
+
+        <!-- Cards List -->
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <VerticalStackLayout x:Name="CardsContainer" Spacing="15">
+                <!-- Cards will be added here dynamically -->
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Add Card Button -->
+        <Button Grid.Row="2" Grid.Column="1"
+                Text="+ Add Card"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="20,12"
+                Clicked="OnAddCardClicked"/>
+    </Grid>
+</ContentView> 

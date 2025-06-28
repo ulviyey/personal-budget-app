@@ -19,8 +19,10 @@
             <!-- Dashboard View -->
             <views:DashboardView x:Name="DashboardView" IsVisible="True" />
             
+            <!-- Cards View -->
+            <views:CardsView x:Name="CardsView" IsVisible="False" />
+            
             <!-- Coming Soon Views -->
-            <views:ComingSoonView x:Name="CardsComingSoonView" IsVisible="False" />
             <views:ComingSoonView x:Name="TransactionsComingSoonView" IsVisible="False" />
             <views:ComingSoonView x:Name="SettingsComingSoonView" IsVisible="False" />
 

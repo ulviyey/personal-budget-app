@@ -49,7 +49,7 @@ namespace Cardify.MAUI.Pages
         {
             // Hide all views
             DashboardView.IsVisible = false;
-            CardsComingSoonView.IsVisible = false;
+            CardsView.IsVisible = false;
             TransactionsComingSoonView.IsVisible = false;
             SettingsComingSoonView.IsVisible = false;
 
@@ -60,8 +60,7 @@ namespace Cardify.MAUI.Pages
                     DashboardView.IsVisible = true;
                     break;
                 case "cards":
-                    CardsComingSoonView.IsVisible = true;
-                    CardsComingSoonView.SetContent("Cards", "Manage your payment cards", "Cards management will be implemented next!");
+                    CardsView.IsVisible = true;
                     break;
                 case "transactions":
                     TransactionsComingSoonView.IsVisible = true;

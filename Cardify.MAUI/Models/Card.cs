@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Cardify.MAUI.Models;
 
 public class Card
@@ -8,4 +11,9 @@ public class Card
     public string CardHolderName { get; set; } = string.Empty;
     public string CardColorStart { get; set; } = "#FFFFFF"; // For visual distinction
     public string CardColorEnd { get; set; } = "#CCCCCC";   // For visual distinction
+    public int UserId { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
+    public int? CreatedBy { get; set; }
+    public int? UpdatedBy { get; set; }
 }
