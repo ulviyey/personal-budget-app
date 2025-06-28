@@ -1,108 +1,104 @@
-using Cardify.MAUI.Pages;
-
 namespace Cardify.MAUI.Views
 {
-    // Define a delegate for the custom event
-    public delegate void SectionSelectedEventHandler(object sender, string sectionName);
-
     public partial class SidebarView : ContentView
     {
-        // Event declared to communicate selection back to MainPage
-        public event SectionSelectedEventHandler SectionSelected = delegate { }; // Initialize with an empty delegate to avoid null
-
-        // Store references to the Border and Button elements for direct manipulation
-        private Border _lastActiveBorder = new Border(); // Initialize with a new instance
-        private Button _lastActiveButton = new Button(); // Initialize with a new instance
+        public event EventHandler<string>? SectionSelected;
+        public event EventHandler? LogoutRequested;
 
         public SidebarView()
         {
             InitializeComponent();
-            // Initial styling for the default active section (Overview)
-            SetActiveSection("overview");
+            SetupNavigation();
         }
 
-        /// <summary>
-        /// Event handler for all section buttons in the sidebar.
-        /// Raises the SectionSelected event with the CommandParameter as the section name.
-        /// </summary>
-        /// <param name="sender">The button that was clicked.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnSectionButtonClicked(object sender, EventArgs e)
+        private void SetupNavigation()
         {
-            if (sender is Button button && button.CommandParameter is string sectionName)
-            {
-                // Update the visual state of the sidebar itself
-                SetActiveSection(sectionName);
+            // Add tap gestures to sidebar buttons
+            var dashboardTap = new TapGestureRecognizer();
+            dashboardTap.Tapped += (s, e) => OnSectionSelected("dashboard");
+            DashboardButton.GestureRecognizers.Add(dashboardTap);
 
-                // Raise the custom event to notify the parent (MainPage)
-                SectionSelected?.Invoke(this, sectionName);
-            }
+            var cardsTap = new TapGestureRecognizer();
+            cardsTap.Tapped += (s, e) => OnSectionSelected("cards");
+            CardsButton.GestureRecognizers.Add(cardsTap);
+
+            var transactionsTap = new TapGestureRecognizer();
+            transactionsTap.Tapped += (s, e) => OnSectionSelected("transactions");
+            TransactionsButton.GestureRecognizers.Add(transactionsTap);
+
+            var settingsTap = new TapGestureRecognizer();
+            settingsTap.Tapped += (s, e) => OnSectionSelected("settings");
+            SettingsButton.GestureRecognizers.Add(settingsTap);
+
+            var logoutTap = new TapGestureRecognizer();
+            logoutTap.Tapped += (s, e) => OnLogoutRequested();
+            LogoutButton.GestureRecognizers.Add(logoutTap);
         }
 
-        private async void OnLogoutClicked(object sender, EventArgs e) => await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-
-        /// <summary>
-        /// Updates the visual appearance of the sidebar to highlight the active section.
-        /// </summary>
-        /// <param name="sectionName">The name of the section that should be highlighted.</param>
-        public void SetActiveSection(string sectionName)
+        private void OnSectionSelected(string section)
         {
-            // Reset previous active section's styling
-            if (_lastActiveBorder != null)
-            {
-                _lastActiveBorder.BackgroundColor = Colors.Transparent;
-            }
-            if (_lastActiveButton != null)
-            {
-                _lastActiveButton.TextColor = Color.FromArgb("#4B5563"); // Default gray text
-            }
+            SectionSelected?.Invoke(this, section);
+        }
 
-            // Apply new active section's styling
-            switch (sectionName)
+        private void OnLogoutRequested()
+        {
+            LogoutRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetActiveSection(string section)
+        {
+            // Reset all buttons
+            DashboardButton.BackgroundColor = Colors.Transparent;
+            CardsButton.BackgroundColor = Colors.Transparent;
+            TransactionsButton.BackgroundColor = Colors.Transparent;
+            SettingsButton.BackgroundColor = Colors.Transparent;
+
+            // Reset all button text colors to default
+            UpdateButtonTextColor(DashboardButton, Color.FromArgb("#6B7280"), false);
+            UpdateButtonTextColor(CardsButton, Color.FromArgb("#6B7280"), false);
+            UpdateButtonTextColor(TransactionsButton, Color.FromArgb("#6B7280"), false);
+            UpdateButtonTextColor(SettingsButton, Color.FromArgb("#6B7280"), false);
+
+            // Update button colors and text colors based on selection
+            switch (section)
             {
-                case "overview":
-                    OverviewBorder.BackgroundColor = Color.FromArgb("#EEF2FF"); // Light blue for active background
-                    OverviewButton.TextColor = Color.FromArgb("#4338CA"); // Dark blue for active text
-                    _lastActiveBorder = OverviewBorder;
-                    _lastActiveButton = OverviewButton;
+                case "dashboard":
+                    DashboardButton.BackgroundColor = Color.FromArgb("#EFF6FF");
+                    UpdateButtonTextColor(DashboardButton, Color.FromArgb("#2563EB"), true);
                     break;
                 case "cards":
-                    CardsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    CardsButton.TextColor = Color.FromArgb("#4338CA");
-                    _lastActiveBorder = CardsBorder;
-                    _lastActiveButton = CardsButton;
+                    CardsButton.BackgroundColor = Color.FromArgb("#EFF6FF");
+                    UpdateButtonTextColor(CardsButton, Color.FromArgb("#2563EB"), true);
                     break;
-                    //case "transactions":
-                    //    TransactionsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    //    TransactionsButton.TextColor = Color.FromArgb("#4338CA");
-                    //    _lastActiveBorder = TransactionsBorder;
-                    //    _lastActiveButton = TransactionsButton;
-                    //    break;
-                    //case "accounts":
-                    //    AccountsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    //    AccountsButton.TextColor = Color.FromArgb("#4338CA");
-                    //    _lastActiveBorder = AccountsBorder;
-                    //    _lastActiveButton = AccountsButton;
-                    //    break;
-                    //case "analytics":
-                    //    AnalyticsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    //    AnalyticsButton.TextColor = Color.FromArgb("#4338CA");
-                    //    _lastActiveBorder = AnalyticsBorder;
-                    //    _lastActiveButton = AnalyticsButton;
-                    //    break;
-                    //case "investments":
-                    //    InvestmentsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    //    InvestmentsButton.TextColor = Color.FromArgb("#4338CA");
-                    //    _lastActiveBorder = InvestmentsBorder;
-                    //    _lastActiveButton = InvestmentsButton;
-                    //    break;
-                    //case "settings":
-                    //    SettingsBorder.BackgroundColor = Color.FromArgb("#EEF2FF");
-                    //    SettingsButton.TextColor = Color.FromArgb("#4338CA");
-                    //    _lastActiveBorder = SettingsBorder;
-                    //    _lastActiveButton = SettingsButton;
-                    //    break;
+                case "transactions":
+                    TransactionsButton.BackgroundColor = Color.FromArgb("#EFF6FF");
+                    UpdateButtonTextColor(TransactionsButton, Color.FromArgb("#2563EB"), true);
+                    break;
+                case "settings":
+                    SettingsButton.BackgroundColor = Color.FromArgb("#EFF6FF");
+                    UpdateButtonTextColor(SettingsButton, Color.FromArgb("#2563EB"), true);
+                    break;
             }
         }
+
+        private void UpdateButtonTextColor(Border button, Color color, bool isBold)
+        {
+            if (button.Content is HorizontalStackLayout layout)
+            {
+                foreach (var child in layout.Children)
+                {
+                    if (child is Label label && label.Text != "📊" && label.Text != "💳" && label.Text != "📝" && label.Text != "⚙️")
+                    {
+                        label.TextColor = color;
+                        label.FontAttributes = isBold ? FontAttributes.Bold : FontAttributes.None;
+                    }
+                }
+            }
+        }
+
+        public void UpdateUsername(string username)
+        {
+            UsernameLabel.Text = $"Welcome, {username}!";
+        }
     }
-}
+} 

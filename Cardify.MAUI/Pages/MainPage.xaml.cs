@@ -1,75 +1,88 @@
+using Cardify.MAUI.Services;
+using Cardify.MAUI.Views;
+
 namespace Cardify.MAUI.Pages
 {
     public partial class MainPage : ContentPage
     {
-        private string _currentActiveSection = "overview";
+        private string _currentSection = "dashboard";
 
         public MainPage()
         {
             InitializeComponent();
+            SetupNavigation();
         }
 
-        protected override void OnAppearing()
+        private void SetupNavigation()
+        {
+            // Wire up sidebar events
+            Sidebar.SectionSelected += OnSectionSelected;
+            Sidebar.LogoutRequested += OnLogoutRequested;
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            // Ensure the initial section is visible and sidebar is updated
-            ShowSection(_currentActiveSection);
-            SidebarNav.SetActiveSection(_currentActiveSection);
+            UpdateUsername();
+            await LoadDashboardData();
         }
 
-
-        private void OnSectionSelected(object sender, string sectionName)
+        private void UpdateUsername()
         {
-            ShowSection(sectionName);
-            // Update the sidebar's active section directly
-            SidebarNav.SetActiveSection(sectionName);
-            _currentActiveSection = sectionName; // Update internal state
+            var username = ApiLoginService.CurrentUsername ?? "User";
+            Sidebar.UpdateUsername(username);
         }
 
-        /// <summary>
-        /// Hides all content sections and then shows the specified section.
-        /// </summary>
-        /// <param name="sectionName">The name of the section to show.</param>
-        private void ShowSection(string sectionName)
+        private async Task LoadDashboardData()
         {
-            // Hide all sections first
-            OverviewSection.IsVisible = false;
-            CardsSection.IsVisible = false;
-            //TransactionsSection.IsVisible = false;
-            //AccountsSection.IsVisible = false;
-            //AnalyticsSection.IsVisible = false;
-            InvestmentsSection.IsVisible = false;
-            SettingsSection.IsVisible = false;
+            await DashboardView.LoadData();
+        }
 
-            // Show the selected section
-            switch (sectionName)
+        private void OnSectionSelected(object? sender, string section)
+        {
+            _currentSection = section;
+            Sidebar.SetActiveSection(section);
+            ShowSection(section);
+        }
+
+        private void ShowSection(string section)
+        {
+            // Hide all views
+            DashboardView.IsVisible = false;
+            CardsComingSoonView.IsVisible = false;
+            TransactionsComingSoonView.IsVisible = false;
+            SettingsComingSoonView.IsVisible = false;
+
+            // Show the selected view
+            switch (section)
             {
-                case "overview":
-                    OverviewSection.IsVisible = true;
+                case "dashboard":
+                    DashboardView.IsVisible = true;
                     break;
                 case "cards":
-                    CardsSection.IsVisible = true;
+                    CardsComingSoonView.IsVisible = true;
+                    CardsComingSoonView.SetContent("Cards", "Manage your payment cards", "Cards management will be implemented next!");
                     break;
-                //case "transactions":
-                //    TransactionsSection.IsVisible = true;
-                //    break;
-                //case "accounts":
-                //    AccountsSection.IsVisible = true;
-                //    break;
-                //case "analytics":
-                //    AnalyticsSection.IsVisible = true;
-                //    break;
-                //case "investments":
-                //    InvestmentsSection.IsVisible = true;
-                //    break;
-                //case "settings":
-                //    SettingsSection.IsVisible = true;
-                //    break;
-                default:
-                    // Fallback to overview if an unknown section is requested
-                    OverviewSection.IsVisible = true;
+                case "transactions":
+                    TransactionsComingSoonView.IsVisible = true;
+                    TransactionsComingSoonView.SetContent("Transactions", "View and manage your transactions", "Transactions management will be implemented next!");
+                    break;
+                case "settings":
+                    SettingsComingSoonView.IsVisible = true;
+                    SettingsComingSoonView.SetContent("Settings", "Manage your account settings", "Settings will be implemented next!");
                     break;
             }
+        }
+
+
+        private async void OnLogoutRequested(object? sender, EventArgs e)
+        {
+            // Clear user data
+            ApiLoginService.CurrentUserId = null;
+            ApiLoginService.CurrentUsername = null;
+            
+            // Navigate back to login
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

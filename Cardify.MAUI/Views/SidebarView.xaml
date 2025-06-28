@@ -1,40 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cardify.MAUI.Views.SidebarView"
-             x:Name="ThisSidebarView"
-             BackgroundColor="#FFFFFF">
-
-    <Grid RowDefinitions="Auto,*" Padding="15">
-
-        <!-- Top content: Logo + Navigation -->
-        <VerticalStackLayout Spacing="0" Grid.Row="0">
-            <!-- Logo -->
-            <Border Margin="0,0,0,20" Padding="15" Background="#6366F1"
-                    StrokeShape="RoundRectangle 10" StrokeThickness="0">
-                <Label Text="Cardify" TextColor="White" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+             x:Class="Cardify.MAUI.Views.SidebarView">
+    
+    <Border BackgroundColor="White"
+            Stroke="#E5E7EB" StrokeThickness="1"
+            StrokeShape="RoundRectangle 12">
+        <VerticalStackLayout Spacing="0">
+            
+            <!-- Logo/Header -->
+            <Border BackgroundColor="#2563EB" 
+                    StrokeThickness="0"
+                    Padding="24,20">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Label Text="💳" FontSize="24" VerticalOptions="Center" />
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Cardify" 
+                               FontSize="20" FontAttributes="Bold" 
+                               TextColor="White" />
+                        <Label x:Name="UsernameLabel" Text="Welcome back!" 
+                               FontSize="12" TextColor="#BFDBFE" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
             </Border>
 
-            <!-- Navigation Items -->
-            <VerticalStackLayout Spacing="5">
-                <Border x:Name="OverviewBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
-                    <Button x:Name="OverviewButton" Text="Overview" Clicked="OnSectionButtonClicked" CommandParameter="overview"
-                            BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+            <!-- Navigation Menu -->
+            <VerticalStackLayout Spacing="0" Padding="16">
+                
+                <!-- Dashboard -->
+                <Border x:Name="DashboardButton" 
+                        BackgroundColor="#EFF6FF" 
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8" 
+                        Padding="16,12" Margin="0,4">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <Label Text="📊" FontSize="16" VerticalOptions="Center" />
+                        <Label Text="Dashboard" 
+                               FontSize="14" FontAttributes="Bold" 
+                               TextColor="#2563EB" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
                 </Border>
 
-                <Border x:Name="CardsBorder" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5">
-                    <Button x:Name="CardsButton" Text="Cards" Clicked="OnSectionButtonClicked" CommandParameter="cards"
-                            BackgroundColor="Transparent" FontAttributes="Bold" FontSize="16" Padding="5" CornerRadius="8" BorderWidth="0"/>
+                <!-- Cards -->
+                <Border x:Name="CardsButton" 
+                        BackgroundColor="Transparent" 
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8" 
+                        Padding="16,12" Margin="0,4">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <Label Text="💳" FontSize="16" VerticalOptions="Center" />
+                        <Label Text="Cards" 
+                               FontSize="14" TextColor="#6B7280" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
                 </Border>
+
+                <!-- Transactions -->
+                <Border x:Name="TransactionsButton" 
+                        BackgroundColor="Transparent" 
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8" 
+                        Padding="16,12" Margin="0,4">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <Label Text="📝" FontSize="16" VerticalOptions="Center" />
+                        <Label Text="Transactions" 
+                               FontSize="14" TextColor="#6B7280" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Settings -->
+                <Border x:Name="SettingsButton" 
+                        BackgroundColor="Transparent" 
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 8" 
+                        Padding="16,12" Margin="0,4">
+                    <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                        <Label Text="⚙️" FontSize="16" VerticalOptions="Center" />
+                        <Label Text="Settings" 
+                               FontSize="14" TextColor="#6B7280" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+
             </VerticalStackLayout>
-        </VerticalStackLayout>
 
-        <!-- Bottom content: Logout -->
-        <Border Grid.Row="1" StrokeShape="RoundRectangle 8" StrokeThickness="0" Padding="10,5" Margin="0,20,0,0"
-                VerticalOptions="End">
-            <Button x:Name="LogoutButton" Text="Sign Out" Clicked="OnLogoutClicked"
-                    BackgroundColor="#F87171" TextColor="White"
-                    FontAttributes="Bold" FontSize="16"
-                    Padding="5" CornerRadius="8" BorderWidth="0"/>
-        </Border>
-    </Grid>
-</ContentView>
+            <!-- Spacer -->
+            <VerticalStackLayout VerticalOptions="FillAndExpand" />
+
+            <!-- Logout -->
+            <Border x:Name="LogoutButton" BackgroundColor="#FEF2F2" 
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 8" 
+                    Padding="16,12" Margin="16">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Label Text="🚪" FontSize="16" VerticalOptions="Center" />
+                    <Label Text="Logout" 
+                           FontSize="14" FontAttributes="Bold" 
+                           TextColor="#DC2626" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </Border>
+
+</ContentView> 
