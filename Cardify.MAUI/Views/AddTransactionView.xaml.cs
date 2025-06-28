@@ -29,11 +29,6 @@ public partial class AddTransactionView : ContentView
         // Set default date
         TransactionDatePicker.Date = DateTime.Now;
         
-        // Populate transaction type picker
-        TransactionTypePicker.Items.Add("Income");
-        TransactionTypePicker.Items.Add("Expense");
-        TransactionTypePicker.Items.Add("Debt");
-        
         LoadCards();
         UpdatePreview();
     }
@@ -66,10 +61,17 @@ public partial class AddTransactionView : ContentView
             TransactionDatePicker.Date = _selectedDate;
             
             // Set transaction type
-            var typeIndex = TransactionTypePicker.Items.IndexOf(transaction.Type);
-            if (typeIndex >= 0)
+            switch (_selectedType)
             {
-                TransactionTypePicker.SelectedIndex = typeIndex;
+                case "income":
+                    IncomeRadioButton.IsChecked = true;
+                    break;
+                case "expense":
+                    ExpenseRadioButton.IsChecked = true;
+                    break;
+                case "debt":
+                    DebtRadioButton.IsChecked = true;
+                    break;
             }
             
             UpdatePreview();
@@ -95,7 +97,9 @@ public partial class AddTransactionView : ContentView
         TransactionNameEntry.Text = string.Empty;
         AmountEntry.Text = string.Empty;
         TransactionDatePicker.Date = DateTime.Now;
-        TransactionTypePicker.SelectedIndex = -1;
+        IncomeRadioButton.IsChecked = false;
+        ExpenseRadioButton.IsChecked = false;
+        DebtRadioButton.IsChecked = false;
         CardPicker.SelectedIndex = -1;
         
         // Reset internal state
@@ -187,9 +191,9 @@ public partial class AddTransactionView : ContentView
 
     private void OnTransactionTypeChanged(object sender, EventArgs e)
     {
-        if (TransactionTypePicker.SelectedItem != null)
+        if (sender is RadioButton radioButton && radioButton.IsChecked)
         {
-            _selectedType = TransactionTypePicker.SelectedItem.ToString()?.ToLower() ?? string.Empty;
+            _selectedType = radioButton.Content.ToString()?.ToLower() ?? string.Empty;
             UpdatePreview();
             ValidateForm();
         }

@@ -49,11 +49,23 @@
                        FontSize="16" 
                        FontAttributes="Bold" 
                        TextColor="#374151"/>
-                <Picker x:Name="TransactionTypePicker" 
-                        Title="Select transaction type"
-                        SelectedIndexChanged="OnTransactionTypeChanged"
-                        TextColor="#1F2937">
-                </Picker>
+                <HorizontalStackLayout Spacing="16">
+                    <RadioButton x:Name="IncomeRadioButton"
+                                 Content="Income"
+                                 GroupName="TransactionType"
+                                 CheckedChanged="OnTransactionTypeChanged"
+                                 TextColor="#1F2937"/>
+                    <RadioButton x:Name="ExpenseRadioButton"
+                                 Content="Expense"
+                                 GroupName="TransactionType"
+                                 CheckedChanged="OnTransactionTypeChanged"
+                                 TextColor="#1F2937"/>
+                    <RadioButton x:Name="DebtRadioButton"
+                                 Content="Debt"
+                                 GroupName="TransactionType"
+                                 CheckedChanged="OnTransactionTypeChanged"
+                                 TextColor="#1F2937"/>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <!-- Date -->
