@@ -15,6 +15,15 @@ namespace Cardify.MAUI.Views
             _dashboardService = new ApiDashboardService();
         }
 
+        public void OnTabChanged(object sender, string section)
+        {
+            // Refresh data when dashboard tab becomes active
+            if (section == "dashboard")
+            {
+                _ = LoadData(); // Fire and forget
+            }
+        }
+
         public async Task LoadData()
         {
             try

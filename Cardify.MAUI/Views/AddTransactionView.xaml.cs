@@ -13,8 +13,11 @@ public partial class AddTransactionView : ContentView
     private DateTime _selectedDate = DateTime.Now;
     private int _selectedCardId = 0;
     private List<Card> _availableCards = new();
+    private bool _isEditMode = false;
+    private int _editingTransactionId = 0;
 
     public event EventHandler? TransactionAdded;
+    public event EventHandler? TransactionUpdated;
     public event EventHandler? Cancelled;
 
     public AddTransactionView()
@@ -35,6 +38,77 @@ public partial class AddTransactionView : ContentView
         UpdatePreview();
     }
 
+    public async Task SetEditMode(int transactionId)
+    {
+        _isEditMode = true;
+        _editingTransactionId = transactionId;
+        
+        // Update UI for edit mode
+        HeaderLabel.Text = "Edit Transaction";
+        SubHeaderLabel.Text = "Update transaction details";
+        SaveTransactionButton.Text = "Update Transaction";
+        
+        try
+        {
+            // Load transaction data
+            var transaction = await _transactionService.GetTransactionByIdAsync(transactionId);
+            
+            // Update internal state first
+            _transactionName = transaction.Name;
+            _amount = Math.Abs(transaction.Amount);
+            _selectedType = transaction.Type.ToLower();
+            _selectedDate = transaction.Date;
+            _selectedCardId = transaction.CardId;
+            
+            // Populate form fields
+            TransactionNameEntry.Text = _transactionName;
+            AmountEntry.Text = _amount.ToString("F2");
+            TransactionDatePicker.Date = _selectedDate;
+            
+            // Set transaction type
+            var typeIndex = TransactionTypePicker.Items.IndexOf(transaction.Type);
+            if (typeIndex >= 0)
+            {
+                TransactionTypePicker.SelectedIndex = typeIndex;
+            }
+            
+            UpdatePreview();
+            ValidateForm();
+        }
+        catch (Exception ex)
+        {
+            await Application.Current.Windows[0].Page.DisplayAlert("Error", "Failed to load transaction: " + ex.Message, "OK");
+        }
+    }
+
+    public void ResetToCreateMode()
+    {
+        _isEditMode = false;
+        _editingTransactionId = 0;
+        
+        // Reset UI for create mode
+        HeaderLabel.Text = "Add New Transaction";
+        SubHeaderLabel.Text = "Enter transaction details to track your finances";
+        SaveTransactionButton.Text = "Add Transaction";
+        
+        // Clear form fields
+        TransactionNameEntry.Text = string.Empty;
+        AmountEntry.Text = string.Empty;
+        TransactionDatePicker.Date = DateTime.Now;
+        TransactionTypePicker.SelectedIndex = -1;
+        CardPicker.SelectedIndex = -1;
+        
+        // Reset internal state
+        _transactionName = string.Empty;
+        _amount = 0;
+        _selectedType = string.Empty;
+        _selectedDate = DateTime.Now;
+        _selectedCardId = 0;
+        
+        UpdatePreview();
+        ValidateForm();
+    }
+
     private async void LoadCards()
     {
         try
@@ -46,6 +120,16 @@ public partial class AddTransactionView : ContentView
             foreach (var card in _availableCards)
             {
                 CardPicker.Items.Add($"{card.CardHolderName} - {card.CardType}");
+            }
+            
+            // If in edit mode, set the selected card
+            if (_isEditMode && _selectedCardId > 0)
+            {
+                var cardIndex = _availableCards.FindIndex(c => c.Id == _selectedCardId);
+                if (cardIndex >= 0)
+                {
+                    CardPicker.SelectedIndex = cardIndex;
+                }
             }
         }
         catch (Exception ex)
@@ -152,50 +236,85 @@ public partial class AddTransactionView : ContentView
 
     private void ValidateForm()
     {
-        var isValid = !string.IsNullOrWhiteSpace(_transactionName) &&
-                     _amount > 0 &&
-                     !string.IsNullOrWhiteSpace(_selectedType) &&
-                     _selectedCardId > 0;
+        var hasName = !string.IsNullOrWhiteSpace(_transactionName);
+        var hasValidAmount = _amount > 0;
+        var hasType = !string.IsNullOrWhiteSpace(_selectedType);
+        var hasCard = _selectedCardId > 0;
 
-        AddTransactionButton.IsEnabled = isValid;
+        var isValid = hasName && hasValidAmount && hasType && hasCard;
+
+        System.Diagnostics.Debug.WriteLine($"ValidateForm - Name: {hasName}, Amount: {hasValidAmount} ({_amount}), Type: {hasType}, Card: {hasCard}, Valid: {isValid}");
+
+        SaveTransactionButton.IsEnabled = isValid;
     }
 
-    private async void OnAddTransactionClicked(object sender, EventArgs e)
+    private async void OnSaveTransactionClicked(object sender, EventArgs e)
     {
         try
         {
-            AddTransactionButton.IsEnabled = false;
-            AddTransactionButton.Text = "Adding...";
+            SaveTransactionButton.IsEnabled = false;
+            SaveTransactionButton.Text = _isEditMode ? "Updating..." : "Adding...";
 
-            var transactionDto = new TransactionCreateDto
+            System.Diagnostics.Debug.WriteLine($"SaveTransactionClicked - Edit mode: {_isEditMode}");
+            System.Diagnostics.Debug.WriteLine($"Transaction data - Name: {_transactionName}, Amount: {_amount}, Type: {_selectedType}, CardId: {_selectedCardId}");
+
+            if (_isEditMode)
             {
-                Name = _transactionName,
-                Amount = _amount,
-                Type = _selectedType,
-                Date = _selectedDate,
-                CardId = _selectedCardId
-            };
+                // Update existing transaction
+                var updateDto = new TransactionUpdateDto
+                {
+                    Name = _transactionName,
+                    Amount = _amount,
+                    Type = _selectedType,
+                    Date = _selectedDate,
+                    CardId = _selectedCardId
+                };
 
-            await _transactionService.CreateTransactionAsync(transactionDto);
+                System.Diagnostics.Debug.WriteLine($"Updating transaction {_editingTransactionId}");
+                await _transactionService.UpdateTransactionAsync(_editingTransactionId, updateDto);
+                System.Diagnostics.Debug.WriteLine("Transaction updated successfully");
 
-            await Application.Current.Windows[0].Page.DisplayAlert(
-                "Success", 
-                "Transaction added successfully!", 
-                "OK");
+                await Application.Current.Windows[0].Page.DisplayAlert(
+                    "Success", 
+                    "Transaction updated successfully!", 
+                    "OK");
 
-            TransactionAdded?.Invoke(this, EventArgs.Empty);
+                TransactionUpdated?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                // Create new transaction
+                var createDto = new TransactionCreateDto
+                {
+                    Name = _transactionName,
+                    Amount = _amount,
+                    Type = _selectedType,
+                    Date = _selectedDate,
+                    CardId = _selectedCardId
+                };
+
+                await _transactionService.CreateTransactionAsync(createDto);
+
+                await Application.Current.Windows[0].Page.DisplayAlert(
+                    "Success", 
+                    "Transaction added successfully!", 
+                    "OK");
+
+                TransactionAdded?.Invoke(this, EventArgs.Empty);
+            }
         }
         catch (Exception ex)
         {
+            System.Diagnostics.Debug.WriteLine($"Error in OnSaveTransactionClicked: {ex.Message}");
             await Application.Current.Windows[0].Page.DisplayAlert(
                 "Error", 
-                $"Failed to add transaction: {ex.Message}", 
+                $"Failed to {( _isEditMode ? "update" : "add" )} transaction: {ex.Message}", 
                 "OK");
         }
         finally
         {
-            AddTransactionButton.IsEnabled = true;
-            AddTransactionButton.Text = "Add Transaction";
+            SaveTransactionButton.IsEnabled = true;
+            SaveTransactionButton.Text = _isEditMode ? "Update Transaction" : "Add Transaction";
         }
     }
 

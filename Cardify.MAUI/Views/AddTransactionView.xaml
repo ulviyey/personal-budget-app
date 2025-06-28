@@ -131,7 +131,7 @@
                         HorizontalOptions="FillAndExpand"
                         Clicked="OnCancelClicked"/>
                 
-                <Button x:Name="AddTransactionButton"
+                <Button x:Name="SaveTransactionButton"
                         Text="Add Transaction"
                         BackgroundColor="#2563EB"
                         TextColor="White"
@@ -139,7 +139,7 @@
                         CornerRadius="8"
                         Padding="20,12"
                         HorizontalOptions="FillAndExpand"
-                        Clicked="OnAddTransactionClicked"
+                        Clicked="OnSaveTransactionClicked"
                         IsEnabled="False"/>
             </HorizontalStackLayout>
 

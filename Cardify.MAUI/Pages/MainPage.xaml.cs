@@ -7,6 +7,9 @@ namespace Cardify.MAUI.Pages
     {
         private string _currentSection = "dashboard";
 
+        // Event that fires when a tab/section changes
+        public event EventHandler<string>? TabChanged;
+
         public MainPage()
         {
             InitializeComponent();
@@ -18,6 +21,17 @@ namespace Cardify.MAUI.Pages
             // Wire up sidebar events
             Sidebar.SectionSelected += OnSectionSelected;
             Sidebar.LogoutRequested += OnLogoutRequested;
+            
+            // Wire up tab change events to notify views
+            TabChanged += DashboardView.OnTabChanged;
+            TabChanged += CardsView.OnTabChanged;
+            TabChanged += TransactionsView.OnTabChanged;
+            
+            // Wire up transaction modification events to refresh dashboard
+            TransactionsView.TransactionModified += OnTransactionModified;
+            
+            // Wire up card modification events to refresh dashboard
+            CardsView.CardModified += OnCardModified;
         }
 
         protected override async void OnAppearing()
@@ -38,11 +52,19 @@ namespace Cardify.MAUI.Pages
             await DashboardView.LoadData();
         }
 
+        public async Task RefreshDashboard()
+        {
+            await DashboardView.LoadData();
+        }
+
         private void OnSectionSelected(object? sender, string section)
         {
             _currentSection = section;
             Sidebar.SetActiveSection(section);
             ShowSection(section);
+            
+            // Fire the TabChanged event to notify views
+            TabChanged?.Invoke(this, section);
         }
 
         private void ShowSection(string section)
@@ -72,7 +94,6 @@ namespace Cardify.MAUI.Pages
             }
         }
 
-
         private async void OnLogoutRequested(object? sender, EventArgs e)
         {
             // Clear user data
@@ -81,6 +102,18 @@ namespace Cardify.MAUI.Pages
             
             // Navigate back to login
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+        }
+
+        private async void OnTransactionModified(object? sender, EventArgs e)
+        {
+            // Refresh dashboard when transactions are modified
+            await RefreshDashboard();
+        }
+
+        private async void OnCardModified(object? sender, EventArgs e)
+        {
+            // Refresh dashboard when cards are modified
+            await RefreshDashboard();
         }
     }
 }

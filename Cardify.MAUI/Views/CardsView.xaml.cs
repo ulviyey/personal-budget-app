@@ -10,12 +10,24 @@ public partial class CardsView : ContentView
     
     public ObservableCollection<Card> Cards { get; set; } = new();
 
+    // Events for card modifications
+    public event EventHandler? CardModified;
+
     public CardsView()
     {
         InitializeComponent();
         _cardService = new ApiCardService(); 
         BindingContext = this;
         LoadCards();
+    }
+
+    public void OnTabChanged(object sender, string section)
+    {
+        // Refresh data when cards tab becomes active
+        if (section == "cards")
+        {
+            LoadCards();
+        }
     }
 
     private async void LoadCards()
@@ -51,6 +63,9 @@ public partial class CardsView : ContentView
         
         // Refresh the cards list
         LoadCards();
+        
+        // Notify that a card was modified
+        CardModified?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnCardUpdated(object sender, EventArgs e)
@@ -61,6 +76,9 @@ public partial class CardsView : ContentView
         
         // Refresh the cards list
         LoadCards();
+        
+        // Notify that a card was modified
+        CardModified?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnCardCancelled(object sender, EventArgs e)
@@ -92,6 +110,9 @@ public partial class CardsView : ContentView
                 await _cardService.DeleteCardAsync(card.Id);
                 Cards.Remove(card); // Remove from the collection
                 await Application.Current.Windows[0].Page.DisplayAlert("Success", "Card deleted successfully!", "OK");
+                
+                // Notify that a card was modified
+                CardModified?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {

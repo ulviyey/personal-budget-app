@@ -77,9 +77,8 @@ namespace Cardify.MAUI.Services
         {
             try
             {
-                // Get transactions from the last 30 days for monthly calculations
-                var fromDate = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
-                var response = await _httpClient.GetAsync($"{_baseUrl}/transactions?userId={userId}&fromDate={fromDate}");
+                // Get all transactions for total balance calculation
+                var response = await _httpClient.GetAsync($"{_baseUrl}/transactions?userId={userId}");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
@@ -100,8 +99,15 @@ namespace Cardify.MAUI.Services
         {
             var activeCards = cards.Count;
             
+            System.Diagnostics.Debug.WriteLine($"Dashboard calculation - Total transactions: {transactions.Count}, Cards: {activeCards}");
+            
             // Calculate total balance from all transactions
-            var totalBalance = transactions.Sum(t => t.Amount);
+            // For now, we'll calculate it as income - expenses
+            var totalIncome = transactions.Where(t => t.Type == "income").Sum(t => t.Amount);
+            var totalExpenses = transactions.Where(t => t.Type == "expense").Sum(t => t.Amount);
+            var totalBalance = totalIncome - totalExpenses;
+
+            System.Diagnostics.Debug.WriteLine($"Dashboard calculation - Total income: {totalIncome}, Total expenses: {totalExpenses}, Balance: {totalBalance}");
 
             // Calculate monthly income and expenses
             var currentMonth = DateTime.Now.Month;
@@ -110,8 +116,10 @@ namespace Cardify.MAUI.Services
             var monthlyTransactions = transactions.Where(t => 
                 t.Date.Month == currentMonth && t.Date.Year == currentYear).ToList();
 
-            var monthlyIncome = monthlyTransactions.Where(t => t.Amount > 0).Sum(t => t.Amount);
-            var monthlyExpenses = Math.Abs(monthlyTransactions.Where(t => t.Amount < 0).Sum(t => t.Amount));
+            var monthlyIncome = monthlyTransactions.Where(t => t.Type == "income").Sum(t => t.Amount);
+            var monthlyExpenses = monthlyTransactions.Where(t => t.Type == "expense").Sum(t => t.Amount);
+
+            System.Diagnostics.Debug.WriteLine($"Dashboard calculation - Monthly transactions: {monthlyTransactions.Count}, Income: {monthlyIncome}, Expenses: {monthlyExpenses}");
 
             // Get recent transactions (last 5)
             var recentTransactions = transactions

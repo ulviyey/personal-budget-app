@@ -70,6 +70,7 @@
         <views:AddTransactionView x:Name="AddTransactionView" 
                                  IsVisible="False"
                                  TransactionAdded="OnTransactionAdded"
+                                 TransactionUpdated="OnTransactionUpdated"
                                  Cancelled="OnTransactionCancelled"/>
 
     </Grid>

@@ -115,13 +115,10 @@ public class ApiTransactionService : ITransactionService
             var response = await _httpClient.PutAsync($"{_baseUrl}/transactions/{id}?userId={userId}", content);
             response.EnsureSuccessStatusCode();
 
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var transaction = JsonSerializer.Deserialize<Transaction>(responseContent, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
-
-            return transaction ?? throw new Exception("Failed to update transaction");
+            // The API returns a success message, not the updated transaction
+            // We need to fetch the updated transaction separately
+            var updatedTransaction = await GetTransactionByIdAsync(id);
+            return updatedTransaction;
         }
         catch (Exception ex)
         {
