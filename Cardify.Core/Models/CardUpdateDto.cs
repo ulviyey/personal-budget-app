@@ -7,6 +7,9 @@ namespace Cardify.Core.Models
         [StringLength(30)]
         public string? CardType { get; set; }
 
+        [StringLength(19)] // For formatted card number with spaces
+        public string? CardNumber { get; set; }
+
         [StringLength(4, MinimumLength = 4)]
         public string? LastFourDigits { get; set; }
 

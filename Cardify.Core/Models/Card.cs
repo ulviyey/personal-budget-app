@@ -7,6 +7,7 @@ namespace Cardify.Core.Models
     {
         public int Id { get; set; }
         public string CardType { get; set; } = string.Empty;
+        public string CardNumber { get; set; } = string.Empty;
         public string LastFourDigits { get; set; } = string.Empty;
         public string CardHolderName { get; set; } = string.Empty;
         public string CardColorStart { get; set; } = "#FFFFFF";

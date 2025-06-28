@@ -20,6 +20,7 @@ namespace Cardify.Core.Services
                 {
                     c.Id,
                     c.CardType,
+                    c.CardNumber,
                     c.LastFourDigits,
                     c.CardHolderName,
                     c.CardColorStart,
@@ -39,6 +40,7 @@ namespace Cardify.Core.Services
                 {
                     c.Id,
                     c.CardType,
+                    c.CardNumber,
                     c.LastFourDigits,
                     c.CardHolderName,
                     c.CardColorStart,
@@ -54,7 +56,7 @@ namespace Cardify.Core.Services
         public async Task<int> CreateCardAsync(CardCreateDto dto, int userId)
         {
             // Validate input
-            if (string.IsNullOrWhiteSpace(dto.CardType) || string.IsNullOrWhiteSpace(dto.LastFourDigits) || string.IsNullOrWhiteSpace(dto.CardHolderName))
+            if (string.IsNullOrWhiteSpace(dto.CardType) || string.IsNullOrWhiteSpace(dto.CardNumber) || string.IsNullOrWhiteSpace(dto.CardHolderName))
                 return 0;
 
             // Check if user exists
@@ -65,6 +67,7 @@ namespace Cardify.Core.Services
             var card = new Card
             {
                 CardType = dto.CardType,
+                CardNumber = dto.CardNumber,
                 LastFourDigits = dto.LastFourDigits,
                 CardHolderName = dto.CardHolderName,
                 CardColorStart = dto.CardColorStart,
@@ -89,6 +92,8 @@ namespace Cardify.Core.Services
             // Update only provided fields
             if (!string.IsNullOrWhiteSpace(dto.CardType))
                 card.CardType = dto.CardType;
+            if (!string.IsNullOrWhiteSpace(dto.CardNumber))
+                card.CardNumber = dto.CardNumber;
             if (!string.IsNullOrWhiteSpace(dto.LastFourDigits))
                 card.LastFourDigits = dto.LastFourDigits;
             if (!string.IsNullOrWhiteSpace(dto.CardHolderName))

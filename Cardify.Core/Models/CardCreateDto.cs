@@ -9,6 +9,10 @@ namespace Cardify.Core.Models
         public string CardType { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(19)] // For formatted card number with spaces
+        public string CardNumber { get; set; } = string.Empty;
+
+        [Required]
         [StringLength(4, MinimumLength = 4)]
         public string LastFourDigits { get; set; } = string.Empty;
 

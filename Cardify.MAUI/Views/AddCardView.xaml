@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.AddCardView">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Add New Card" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#1F2937"/>
+                <Label Text="Enter your card details to add it to your collection" 
+                       FontSize="16" 
+                       TextColor="#6B7280"/>
+            </VerticalStackLayout>
+
+            <!-- Card Type -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Card Type *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Picker x:Name="CardTypePicker" 
+                        Title="Select card type"
+                        SelectedIndexChanged="OnCardTypeChanged"
+                        TextColor="#1F2937">
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- Full Card Number -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Card Number *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Entry x:Name="CardNumberEntry" 
+                       Placeholder="1234 5678 9012 3456"
+                       PlaceholderColor="#9CA3AF"
+                       TextColor="#1F2937"
+                       MaxLength="19"
+                       Keyboard="Numeric"
+                       TextChanged="OnCardNumberChanged"/>
+                <Label Text="Enter the full card number (spaces will be automatically added)" 
+                       FontSize="12" 
+                       TextColor="#6B7280"/>
+            </VerticalStackLayout>
+
+            <!-- Card Holder Name -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Card Holder Name *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Entry x:Name="CardHolderNameEntry" 
+                       Placeholder="John Doe"
+                       PlaceholderColor="#9CA3AF"
+                       TextColor="#1F2937"
+                       TextChanged="OnCardHolderNameChanged"/>
+            </VerticalStackLayout>
+
+            <!-- Card Colors -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Card Colors" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Label Text="Choose colors for the gradient" 
+                       FontSize="14" 
+                       TextColor="#6B7280"/>
+                
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="15" RowSpacing="15">
+                    <!-- Start Color -->
+                    <VerticalStackLayout Grid.Column="0" Grid.Row="0" Spacing="8">
+                        <Label Text="Start Color" FontSize="14" TextColor="#6B7280"/>
+                        <Border x:Name="StartColorFrame" 
+                                BackgroundColor="#FFFFFF" 
+                                Stroke="#E5E7EB" 
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="12">
+                            <Label x:Name="StartColorLabel" 
+                                   Text="#FFFFFF" 
+                                   FontSize="12" 
+                                   HorizontalOptions="Center"/>
+                        </Border>
+                        <Button Text="Change Color" 
+                                BackgroundColor="#F3F4F6" 
+                                TextColor="#374151"
+                                FontSize="12"
+                                Padding="8,4"
+                                CornerRadius="6"
+                                Clicked="OnStartColorClicked"/>
+                    </VerticalStackLayout>
+
+                    <!-- End Color -->
+                    <VerticalStackLayout Grid.Column="1" Grid.Row="0" Spacing="8">
+                        <Label Text="End Color" FontSize="14" TextColor="#6B7280"/>
+                        <Border x:Name="EndColorFrame" 
+                                BackgroundColor="#CCCCCC" 
+                                Stroke="#E5E7EB" 
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="12">
+                            <Label x:Name="EndColorLabel" 
+                                   Text="#CCCCCC" 
+                                   FontSize="12" 
+                                   HorizontalOptions="Center"/>
+                        </Border>
+                        <Button Text="Change Color" 
+                                BackgroundColor="#F3F4F6" 
+                                TextColor="#374151"
+                                FontSize="12"
+                                Padding="8,4"
+                                CornerRadius="6"
+                                Clicked="OnEndColorClicked"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+
+            <!-- Preview -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Preview" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Border x:Name="PreviewFrame" 
+                        BackgroundColor="#F9FAFB" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout x:Name="PreviewContent" Spacing="8">
+                        <Label x:Name="PreviewCardType" 
+                               Text="Card Type" 
+                               FontSize="14" 
+                               TextColor="#6B7280"/>
+                        <Label x:Name="PreviewCardNumber" 
+                               Text="**** **** **** 1234" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#1F2937"/>
+                        <Label x:Name="PreviewCardHolder" 
+                               Text="Card Holder Name" 
+                               FontSize="16" 
+                               TextColor="#374151"/>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Buttons -->
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Fill">
+                <Button x:Name="CancelButton"
+                        Text="Cancel"
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#374151"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="OnCancelClicked"/>
+                
+                <Button x:Name="AddCardButton"
+                        Text="Add Card"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="OnAddCardClicked"
+                        IsEnabled="False"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView> 
