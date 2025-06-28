@@ -140,6 +140,7 @@
         <views:AddCardView x:Name="AddCardView" 
                           IsVisible="False"
                           CardAdded="OnCardAdded"
+                          CardUpdated="OnCardUpdated"
                           Cancelled="OnCardCancelled"/>
 
     </Grid>

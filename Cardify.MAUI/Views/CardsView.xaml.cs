@@ -37,12 +37,23 @@ public partial class CardsView : ContentView
 
     private void OnAddCardClicked(object sender, EventArgs e)
     {
-        // Show the Add Card view
+        // Show the Add Card view in add mode
+        AddCardView.SetAddMode();
         CardsListGrid.IsVisible = false;
         AddCardView.IsVisible = true;
     }
 
     private void OnCardAdded(object sender, EventArgs e)
+    {
+        // Hide the Add Card view and show the cards list
+        AddCardView.IsVisible = false;
+        CardsListGrid.IsVisible = true;
+        
+        // Refresh the cards list
+        LoadCards();
+    }
+
+    private void OnCardUpdated(object sender, EventArgs e)
     {
         // Hide the Add Card view and show the cards list
         AddCardView.IsVisible = false;
@@ -63,8 +74,10 @@ public partial class CardsView : ContentView
     {
         if (sender is Button button && button.BindingContext is Card card)
         {
-            // TODO: Implement edit card functionality
-            await Application.Current.Windows[0].Page.DisplayAlert("Coming Soon", "Edit card functionality will be implemented next!", "OK");
+            // Show the Add Card view in edit mode
+            AddCardView.SetEditMode(card);
+            CardsListGrid.IsVisible = false;
+            AddCardView.IsVisible = true;
         }
     }
 

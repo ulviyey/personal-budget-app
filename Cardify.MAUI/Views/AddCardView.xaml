@@ -7,11 +7,11 @@
             
             <!-- Header -->
             <VerticalStackLayout Spacing="8">
-                <Label Text="Add New Card" 
+                <Label x:Name="HeaderLabel" Text="Add New Card" 
                        FontSize="28" 
                        FontAttributes="Bold" 
                        TextColor="#1F2937"/>
-                <Label Text="Enter your card details to add it to your collection" 
+                <Label x:Name="SubHeaderLabel" Text="Enter your card details to add it to your collection" 
                        FontSize="16" 
                        TextColor="#6B7280"/>
             </VerticalStackLayout>

@@ -11,8 +11,12 @@ public partial class AddCardView : ContentView
     private string _cardHolderName = string.Empty;
     private string _startColor = "#FFFFFF";
     private string _endColor = "#CCCCCC";
+    
+    public bool IsEditMode { get; private set; }
+    public Card? CardToEdit { get; private set; }
 
     public event EventHandler? CardAdded;
+    public event EventHandler? CardUpdated;
     public event EventHandler? Cancelled;
 
     public AddCardView()
@@ -27,6 +31,66 @@ public partial class AddCardView : ContentView
         CardTypePicker.Items.Add("Gift Card");
         
         UpdatePreview();
+    }
+
+    public void SetEditMode(Card card)
+    {
+        IsEditMode = true;
+        CardToEdit = card;
+        
+        // Populate fields with existing card data
+        _selectedCardType = card.CardType;
+        _cardNumber = card.CardNumber?.Replace(" ", "") ?? "";
+        _cardHolderName = card.CardHolderName;
+        _startColor = card.CardColorStart;
+        _endColor = card.CardColorEnd;
+        
+        // Update UI
+        CardTypePicker.SelectedItem = _selectedCardType;
+        CardNumberEntry.Text = FormatCardNumber(_cardNumber);
+        CardHolderNameEntry.Text = _cardHolderName;
+        StartColorFrame.BackgroundColor = Color.FromArgb(_startColor);
+        StartColorLabel.Text = _startColor;
+        EndColorFrame.BackgroundColor = Color.FromArgb(_endColor);
+        EndColorLabel.Text = _endColor;
+        
+        // Update button text and header
+        AddCardButton.Text = "Update Card";
+        HeaderLabel.Text = "Edit Card";
+        SubHeaderLabel.Text = "Update your card details";
+        
+        UpdatePreview();
+        ValidateForm();
+    }
+
+    public void SetAddMode()
+    {
+        IsEditMode = false;
+        CardToEdit = null;
+        
+        // Clear fields
+        _selectedCardType = string.Empty;
+        _cardNumber = string.Empty;
+        _cardHolderName = string.Empty;
+        _startColor = "#FFFFFF";
+        _endColor = "#CCCCCC";
+        
+        // Update UI
+        CardTypePicker.SelectedItem = null;
+        CardNumberEntry.Text = string.Empty;
+        CardHolderNameEntry.Text = string.Empty;
+        StartColorFrame.BackgroundColor = Color.FromArgb(_startColor);
+        StartColorLabel.Text = _startColor;
+        EndColorFrame.BackgroundColor = Color.FromArgb(_endColor);
+        EndColorLabel.Text = _endColor;
+        
+        // Update button text and header
+        AddCardButton.Text = "Add Card";
+        HeaderLabel.Text = "Add New Card";
+        SubHeaderLabel.Text = "Enter your card details to add it to your collection";
+        
+        UpdatePreview();
+        ValidateForm();
     }
 
     private void OnCardTypeChanged(object sender, EventArgs e)
@@ -213,7 +277,7 @@ public partial class AddCardView : ContentView
         try
         {
             AddCardButton.IsEnabled = false;
-            AddCardButton.Text = "Adding...";
+            AddCardButton.Text = IsEditMode ? "Updating..." : "Adding...";
 
             // Extract last 4 digits for storage
             var lastFourDigits = _cardNumber.Length >= 4 ? _cardNumber.Substring(_cardNumber.Length - 4) : _cardNumber;
@@ -221,36 +285,56 @@ public partial class AddCardView : ContentView
             // Format the full card number with spaces
             var formattedCardNumber = FormatCardNumber(_cardNumber);
 
-            var cardDto = new CardCreateDto
+            if (IsEditMode)
             {
-                CardType = _selectedCardType,
-                CardNumber = formattedCardNumber,
-                LastFourDigits = lastFourDigits,
-                CardHolderName = _cardHolderName,
-                CardColorStart = _startColor,
-                CardColorEnd = _endColor
-            };
+                var cardUpdateDto = new CardUpdateDto
+                {
+                    CardType = _selectedCardType,
+                    CardNumber = formattedCardNumber,
+                    LastFourDigits = lastFourDigits,
+                    CardHolderName = _cardHolderName,
+                    CardColorStart = _startColor,
+                    CardColorEnd = _endColor
+                };
 
-            await _cardService.CreateCardAsync(cardDto);
+                await _cardService.UpdateCardAsync(CardToEdit!.Id, cardUpdateDto);
+                await Application.Current.Windows[0].Page.DisplayAlert(
+                    "Success", 
+                    "Card updated successfully!", 
+                    "OK");
+                CardUpdated?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                var cardCreateDto = new CardCreateDto
+                {
+                    CardType = _selectedCardType,
+                    CardNumber = formattedCardNumber,
+                    LastFourDigits = lastFourDigits,
+                    CardHolderName = _cardHolderName,
+                    CardColorStart = _startColor,
+                    CardColorEnd = _endColor
+                };
 
-            await Application.Current.Windows[0].Page.DisplayAlert(
-                "Success", 
-                "Card added successfully!", 
-                "OK");
-
-            CardAdded?.Invoke(this, EventArgs.Empty);
+                await _cardService.CreateCardAsync(cardCreateDto);
+                await Application.Current.Windows[0].Page.DisplayAlert(
+                    "Success", 
+                    "Card added successfully!", 
+                    "OK");
+                CardAdded?.Invoke(this, EventArgs.Empty);
+            }
         }
         catch (Exception ex)
         {
             await Application.Current.Windows[0].Page.DisplayAlert(
                 "Error", 
-                $"Failed to add card: {ex.Message}", 
+                $"Failed to {(IsEditMode ? "update" : "add")} card: {ex.Message}", 
                 "OK");
         }
         finally
         {
             AddCardButton.IsEnabled = true;
-            AddCardButton.Text = "Add Card";
+            AddCardButton.Text = IsEditMode ? "Update Card" : "Add Card";
         }
     }
 
