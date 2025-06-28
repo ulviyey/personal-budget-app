@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj": {}
+    "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
+    "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
+        "projectUniqueName": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
         "projectName": "Cardify.Core",
-        "projectPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
+        "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
         "packagesPath": "C:\\Users\\Pasora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\obj\\",
+        "outputPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,7 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,18 +82,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj": {
+    "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj",
+        "projectUniqueName": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj",
         "projectName": "Cardify.MAUI",
-        "projectPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj",
+        "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\Cardify.MAUI.csproj",
         "packagesPath": "C:\\Users\\Pasora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\obj\\",
+        "outputPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.MAUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -108,15 +108,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "c:\\program files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0-windows10.0.19041": {
             "targetAlias": "net9.0-windows10.0.19041.0",
             "projectReferences": {
-              "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
-                "projectPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj"
+              "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
+                "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj"
               }
             }
           }
@@ -175,7 +175,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

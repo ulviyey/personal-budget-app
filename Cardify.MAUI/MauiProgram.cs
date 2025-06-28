@@ -1,5 +1,4 @@
-﻿
-using Cardify.Core.Services;
+﻿using Cardify.Core.Services;
 using Cardify.MAUI.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
@@ -25,7 +24,7 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        builder.Services.AddSingleton<ILoginService, MockLoginService>();
+        builder.Services.AddSingleton<ILoginService, ApiLoginService>();
 
 #if WINDOWS
         builder.ConfigureLifecycleEvents(events =>

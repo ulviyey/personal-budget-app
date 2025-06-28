@@ -36,13 +36,23 @@
                 <!-- Email -->
                 <VerticalStackLayout>
                     <Label Text="Email" TextColor="White" FontSize="14"/>
-                    <Entry x:Name="EmailEntry" Placeholder="Enter your email" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="EmailEntry" 
+                           Placeholder="Enter your email" 
+                           TextColor="White" 
+                           FontSize="14"
+                           MaxLength="100"
+                           Keyboard="Email"/>
                 </VerticalStackLayout>
 
                 <!-- Password -->
                 <VerticalStackLayout>
                     <Label Text="Password" TextColor="White" FontSize="14"/>
-                    <Entry x:Name="PasswordEntry" Placeholder="Enter your password" IsPassword="True" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="PasswordEntry" 
+                           Placeholder="Enter your password" 
+                           IsPassword="True" 
+                           TextColor="White" 
+                           FontSize="14"
+                           MaxLength="100"/>
                 </VerticalStackLayout>
 
                 <!-- General Error -->
@@ -66,6 +76,12 @@
 
                 <!-- Forgot Password -->
                 <Label Text="Forgot your password?"
+                       TextColor="#60a5fa"
+                       FontSize="13"
+                       HorizontalTextAlignment="Center" />
+
+                <!-- Register Link -->
+                <Label Text="Don't have an account? Register here"
                        TextColor="#60a5fa"
                        FontSize="13"
                        HorizontalTextAlignment="Center" />

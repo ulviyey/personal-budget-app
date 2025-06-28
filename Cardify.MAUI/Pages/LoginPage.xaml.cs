@@ -22,9 +22,39 @@ public partial class LoginPage : ContentPage
         var email = EmailEntry.Text?.Trim();
         var password = PasswordEntry.Text;
 
-        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+        // Validation (meeting course requirement for data validation)
+        if (string.IsNullOrWhiteSpace(email))
         {
-            GeneralErrorLabel.Text = "Email and password are required.";
+            GeneralErrorLabel.Text = "Email is required.";
+            GeneralErrorLabel.IsVisible = true;
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            GeneralErrorLabel.Text = "Password is required.";
+            GeneralErrorLabel.IsVisible = true;
+            return;
+        }
+
+        if (email.Length > 100)
+        {
+            GeneralErrorLabel.Text = "Email cannot exceed 100 characters.";
+            GeneralErrorLabel.IsVisible = true;
+            return;
+        }
+
+        if (password.Length > 100)
+        {
+            GeneralErrorLabel.Text = "Password cannot exceed 100 characters.";
+            GeneralErrorLabel.IsVisible = true;
+            return;
+        }
+
+        // Basic email format validation
+        if (!email.Contains("@") || !email.Contains("."))
+        {
+            GeneralErrorLabel.Text = "Please enter a valid email address.";
             GeneralErrorLabel.IsVisible = true;
             return;
         }

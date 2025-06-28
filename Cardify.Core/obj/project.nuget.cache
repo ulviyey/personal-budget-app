@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6Z4HAdYqirw=",
+  "dgSpecHash": "CY9izmiYJOE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
+  "projectFilePath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pasora\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Pasora\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

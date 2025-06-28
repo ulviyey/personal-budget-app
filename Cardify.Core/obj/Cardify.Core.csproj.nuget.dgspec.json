@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {}
+    "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
+    "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
+        "projectUniqueName": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
         "projectName": "Cardify.Core",
-        "projectPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
+        "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj",
         "packagesPath": "C:\\Users\\Pasora\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\obj\\",
+        "outputPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
