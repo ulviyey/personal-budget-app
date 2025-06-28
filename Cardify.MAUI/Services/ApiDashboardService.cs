@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Cardify.MAUI.Models;
 
 namespace Cardify.MAUI.Services
 {
@@ -23,35 +24,117 @@ namespace Cardify.MAUI.Services
                     return null;
                 }
 
-                System.Diagnostics.Debug.WriteLine($"Dashboard service: Calling API for user {userId}");
-                var response = await _httpClient.GetAsync($"{_baseUrl}/dashboard?userId={userId}");
-                
-                System.Diagnostics.Debug.WriteLine($"Dashboard service: Response status: {response.StatusCode}");
-                
-                if (response.IsSuccessStatusCode)
+                System.Diagnostics.Debug.WriteLine($"Dashboard service: Fetching data for user {userId}");
+
+                // Fetch cards and transactions in parallel
+                var cardsTask = GetCardsAsync(userId.Value);
+                var transactionsTask = GetTransactionsAsync(userId.Value);
+
+                await Task.WhenAll(cardsTask, transactionsTask);
+
+                var cards = await cardsTask;
+                var transactions = await transactionsTask;
+
+                if (cards == null || transactions == null)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    System.Diagnostics.Debug.WriteLine($"Dashboard service: Response content: {responseContent}");
-                    
-                    var result = JsonSerializer.Deserialize<DashboardData>(responseContent, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-                    return result;
+                    System.Diagnostics.Debug.WriteLine("Dashboard service: Failed to fetch data");
+                    return null;
                 }
-                else
-                {
-                    var errorContent = await response.Content.ReadAsStringAsync();
-                    System.Diagnostics.Debug.WriteLine($"Dashboard service: Error response: {errorContent}");
-                }
-                
-                return null;
+
+                // Calculate dashboard stats
+                var dashboardData = CalculateDashboardStats(cards, transactions);
+                return dashboardData;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Dashboard service exception: {ex.Message}");
                 return null;
             }
+        }
+
+        private async Task<List<Card>?> GetCardsAsync(int userId)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{_baseUrl}/cards?userId={userId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<List<Card>>(content, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error fetching cards: {ex.Message}");
+            }
+            return null;
+        }
+
+        private async Task<List<Transaction>?> GetTransactionsAsync(int userId)
+        {
+            try
+            {
+                // Get transactions from the last 30 days for monthly calculations
+                var fromDate = DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd");
+                var response = await _httpClient.GetAsync($"{_baseUrl}/transactions?userId={userId}&fromDate={fromDate}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<List<Transaction>>(content, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error fetching transactions: {ex.Message}");
+            }
+            return null;
+        }
+
+        private DashboardData CalculateDashboardStats(List<Card> cards, List<Transaction> transactions)
+        {
+            var activeCards = cards.Count;
+            
+            // Calculate total balance from all transactions
+            var totalBalance = transactions.Sum(t => t.Amount);
+
+            // Calculate monthly income and expenses
+            var currentMonth = DateTime.Now.Month;
+            var currentYear = DateTime.Now.Year;
+            
+            var monthlyTransactions = transactions.Where(t => 
+                t.Date.Month == currentMonth && t.Date.Year == currentYear).ToList();
+
+            var monthlyIncome = monthlyTransactions.Where(t => t.Amount > 0).Sum(t => t.Amount);
+            var monthlyExpenses = Math.Abs(monthlyTransactions.Where(t => t.Amount < 0).Sum(t => t.Amount));
+
+            // Get recent transactions (last 5)
+            var recentTransactions = transactions
+                .OrderByDescending(t => t.Date)
+                .Take(5)
+                .Select(t => new TransactionData
+                {
+                    Id = t.Id,
+                    Description = t.Name,
+                    Amount = (double)t.Amount,
+                    TransactionDate = t.Date,
+                    Category = t.Type
+                })
+                .ToList();
+
+            return new DashboardData
+            {
+                TotalBalance = (double)totalBalance,
+                MonthlyIncome = (double)monthlyIncome,
+                MonthlyExpenses = (double)monthlyExpenses,
+                ActiveCards = activeCards,
+                RecentTransactions = recentTransactions
+            };
         }
 
         public class DashboardData
@@ -68,7 +151,7 @@ namespace Cardify.MAUI.Services
             public int Id { get; set; }
             public string Description { get; set; } = string.Empty;
             public double Amount { get; set; }
-            public string TransactionDate { get; set; } = string.Empty;
+            public DateTime TransactionDate { get; set; }
             public string Category { get; set; } = string.Empty;
         }
     }

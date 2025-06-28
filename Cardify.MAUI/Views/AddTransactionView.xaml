@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.AddTransactionView">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <VerticalStackLayout Spacing="8">
+                <Label x:Name="HeaderLabel" Text="Add New Transaction" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#1F2937"/>
+                <Label x:Name="SubHeaderLabel" Text="Enter transaction details to track your finances" 
+                       FontSize="16" 
+                       TextColor="#6B7280"/>
+            </VerticalStackLayout>
+
+            <!-- Transaction Name -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Transaction Name *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Entry x:Name="TransactionNameEntry" 
+                       Placeholder="e.g., Grocery Shopping, Salary, etc."
+                       PlaceholderColor="#9CA3AF"
+                       TextColor="#1F2937"
+                       TextChanged="OnTransactionNameChanged"/>
+            </VerticalStackLayout>
+
+            <!-- Amount -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Amount *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Entry x:Name="AmountEntry" 
+                       Placeholder="0.00"
+                       PlaceholderColor="#9CA3AF"
+                       TextColor="#1F2937"
+                       Keyboard="Numeric"
+                       TextChanged="OnAmountChanged"/>
+            </VerticalStackLayout>
+
+            <!-- Transaction Type -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Transaction Type *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Picker x:Name="TransactionTypePicker" 
+                        Title="Select transaction type"
+                        SelectedIndexChanged="OnTransactionTypeChanged"
+                        TextColor="#1F2937">
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- Date -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Date *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <DatePicker x:Name="TransactionDatePicker" 
+                           DateSelected="OnDateSelected"
+                           TextColor="#1F2937"/>
+            </VerticalStackLayout>
+
+            <!-- Card Selection -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Card *" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Picker x:Name="CardPicker" 
+                        Title="Select a card"
+                        SelectedIndexChanged="OnCardChanged"
+                        TextColor="#1F2937">
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- Preview -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Preview" 
+                       FontSize="16" 
+                       FontAttributes="Bold" 
+                       TextColor="#374151"/>
+                <Border x:Name="PreviewFrame" 
+                        BackgroundColor="#F9FAFB" 
+                        Stroke="#E5E7EB" 
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 8"
+                        Padding="16">
+                    <VerticalStackLayout x:Name="PreviewContent" Spacing="8">
+                        <Label x:Name="PreviewName" 
+                               Text="Transaction Name" 
+                               FontSize="16" 
+                               FontAttributes="Bold"
+                               TextColor="#1F2937"/>
+                        <Label x:Name="PreviewAmount" 
+                               Text="$0.00" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               TextColor="#059669"/>
+                        <Label x:Name="PreviewType" 
+                               Text="Type" 
+                               FontSize="14" 
+                               TextColor="#6B7280"/>
+                        <Label x:Name="PreviewDate" 
+                               Text="Date" 
+                               FontSize="14" 
+                               TextColor="#6B7280"/>
+                        <Label x:Name="PreviewCard" 
+                               Text="Card" 
+                               FontSize="14" 
+                               TextColor="#6B7280"/>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Buttons -->
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Fill">
+                <Button x:Name="CancelButton"
+                        Text="Cancel"
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#374151"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="OnCancelClicked"/>
+                
+                <Button x:Name="AddTransactionButton"
+                        Text="Add Transaction"
+                        BackgroundColor="#2563EB"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        Padding="20,12"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="OnAddTransactionClicked"
+                        IsEnabled="False"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView> 

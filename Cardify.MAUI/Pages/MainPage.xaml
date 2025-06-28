@@ -22,8 +22,10 @@
             <!-- Cards View -->
             <views:CardsView x:Name="CardsView" IsVisible="False" />
             
+            <!-- Transactions View -->
+            <views:TransactionsView x:Name="TransactionsView" IsVisible="False" />
+            
             <!-- Coming Soon Views -->
-            <views:ComingSoonView x:Name="TransactionsComingSoonView" IsVisible="False" />
             <views:ComingSoonView x:Name="SettingsComingSoonView" IsVisible="False" />
 
         </Grid>

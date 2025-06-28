@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.TransactionCardTemplate">
+    
+    <Border BackgroundColor="White"
+            Stroke="#E5E7EB"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 8"
+            Padding="16">
+        <Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto">
+            
+            <!-- Transaction Details -->
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0" Spacing="4">
+                <Label Text="{Binding Name}"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#000000"/>
+                <Label Text="{Binding FormattedDate}"
+                       FontSize="14"
+                       TextColor="#6B7280"/>
+            </VerticalStackLayout>
+            
+            <!-- Amount -->
+            <Label Grid.Column="1" Grid.Row="0"
+                   Text="{Binding FormattedAmount}"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="{Binding IsIncome, Converter={StaticResource BoolToColorConverter}}"
+                   VerticalOptions="Center"
+                   Margin="16,0,0,0"/>
+            
+            <!-- Type Badge -->
+            <Border Grid.Column="2" Grid.Row="0"
+                    BackgroundColor="{Binding Type, Converter={StaticResource TypeToColorConverter}}"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 4"
+                    Padding="8,4"
+                    Margin="8,0,0,0">
+                <Label Text="{Binding TypeDisplay}"
+                       FontSize="12"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+            </Border>
+            
+            <!-- Card Info -->
+            <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                   Text="{Binding Card.CardHolderName, StringFormat='Card: {0}'}"
+                   FontSize="12"
+                   TextColor="#9CA3AF"
+                   Margin="0,8,0,0"/>
+            
+            <!-- Action Buttons (Optional - can be hidden) -->
+            <HorizontalStackLayout Grid.Column="2" Grid.Row="1"
+                                   Spacing="8"
+                                   HorizontalOptions="End"
+                                   Margin="0,8,0,0"
+                                   IsVisible="{Binding ShowActions}">
+                
+                <Button Text="Edit"
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#374151"
+                        FontSize="10"
+                        Padding="8,4"
+                        CornerRadius="4"
+                        Clicked="OnEditClicked"/>
+                
+                <Button Text="Delete"
+                        BackgroundColor="#EF4444"
+                        TextColor="White"
+                        FontSize="10"
+                        Padding="8,4"
+                        CornerRadius="4"
+                        Clicked="OnDeleteClicked"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </Border>
+    
+</ContentView> 

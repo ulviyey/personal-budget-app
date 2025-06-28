@@ -64,6 +64,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.AddCard
 build_metadata.AdditionalFiles.TargetPath = Views\AddCardView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AddCardView.xaml
 
+[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/AddTransactionView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.AddTransactionView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddTransactionView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddTransactionView.xaml
+
 [c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/CardDisplayView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.CardDisplayView.xaml
@@ -99,3 +105,15 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SidebarView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\SidebarView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\SidebarView.xaml
+
+[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/TransactionCardTemplate.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.TransactionCardTemplate.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\TransactionCardTemplate.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\TransactionCardTemplate.xaml
+
+[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/TransactionsView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.TransactionsView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\TransactionsView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\TransactionsView.xaml

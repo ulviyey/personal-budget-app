@@ -19,7 +19,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
-builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 var app = builder.Build();
 
@@ -136,20 +135,6 @@ app.MapDelete("/api/transactions/{id}", async (int id, int userId, ITransactionS
         return Results.NotFound("Transaction not found.");
 
     return Results.Ok(new { message = "Transaction deleted successfully." });
-});
-
-// Dashboard/Overview Endpoint
-app.MapGet("/api/dashboard", async (int userId, IDashboardService dashboardService) =>
-{
-    try
-    {
-        var dashboardData = await dashboardService.GetDashboardDataAsync(userId);
-        return Results.Ok(dashboardData);
-    }
-    catch (ArgumentException ex)
-    {
-        return Results.BadRequest(ex.Message);
-    }
 });
 
 // User Logout Endpoint

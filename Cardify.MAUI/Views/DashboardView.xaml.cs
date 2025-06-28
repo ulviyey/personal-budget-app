@@ -1,4 +1,6 @@
 using Cardify.MAUI.Services;
+using Cardify.MAUI.Views;
+using Cardify.MAUI.Models;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace Cardify.MAUI.Views
@@ -20,16 +22,19 @@ namespace Cardify.MAUI.Views
                 var dashboardData = await _dashboardService.GetDashboardDataAsync();
                 if (dashboardData != null)
                 {
+                    System.Diagnostics.Debug.WriteLine($"Dashboard loaded: {dashboardData.ActiveCards} cards, {dashboardData.RecentTransactions.Count} transactions");
                     UpdateStats(dashboardData);
                     PopulateTransactions(dashboardData.RecentTransactions);
                 }
                 else
                 {
+                    System.Diagnostics.Debug.WriteLine("Dashboard data is null");
                     ShowEmptyState();
                 }
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Dashboard load error: {ex.Message}");
                 ShowEmptyState();
             }
         }
@@ -45,9 +50,12 @@ namespace Cardify.MAUI.Views
         private void PopulateTransactions(List<ApiDashboardService.TransactionData> transactions)
         {
             TransactionsContainer.Children.Clear();
+            
+            System.Diagnostics.Debug.WriteLine($"PopulateTransactions called with {transactions?.Count ?? 0} transactions");
 
             if (!transactions.Any())
             {
+                System.Diagnostics.Debug.WriteLine("No transactions to display");
                 var emptyLabel = new Label
                 {
                     Text = "No transactions yet. Add some transactions to see them here.",
@@ -59,70 +67,26 @@ namespace Cardify.MAUI.Views
                 return;
             }
 
-            foreach (var transaction in transactions.Take(5)) // Show only 5 most recent
+            foreach (var transactionData in transactions.Take(5)) // Show only 5 most recent
             {
-                var transactionCard = CreateTransactionCard(transaction);
+                System.Diagnostics.Debug.WriteLine($"Processing transaction: {transactionData.Description} - {transactionData.Amount}");
+                
+                var transaction = new Transaction
+                {
+                    Id = transactionData.Id,
+                    Name = transactionData.Description,
+                    Amount = (decimal)transactionData.Amount,
+                    Type = transactionData.Category,
+                    Date = transactionData.TransactionDate,
+                    ShowActions = false // Hide actions in dashboard
+                };
+                
+                var transactionCard = new TransactionCardTemplate
+                {
+                    BindingContext = transaction
+                };
                 TransactionsContainer.Children.Add(transactionCard);
             }
-        }
-
-        private Border CreateTransactionCard(ApiDashboardService.TransactionData transaction)
-        {
-            bool isIncome = transaction.Amount > 0;
-            var amountColor = isIncome ? Color.FromArgb("#059669") : Color.FromArgb("#DC2626");
-
-            var card = new Border
-            {
-                Background = Color.FromArgb("#F9FAFB"),
-                StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(6) },
-                Padding = 12,
-                StrokeThickness = 0
-            };
-
-            var layout = new Grid
-            {
-                ColumnDefinitions = new ColumnDefinitionCollection
-                {
-                    new ColumnDefinition { Width = GridLength.Star },
-                    new ColumnDefinition { Width = GridLength.Auto }
-                }
-            };
-
-            var descriptionLayout = new VerticalStackLayout
-            {
-                Spacing = 4
-            };
-            descriptionLayout.Add(new Label
-            {
-                Text = transaction.Description,
-                FontSize = 14,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Color.FromArgb("#1F2937")
-            });
-            descriptionLayout.Add(new Label
-            {
-                Text = $"{transaction.Category} • {transaction.TransactionDate}",
-                FontSize = 12,
-                TextColor = Color.FromArgb("#6B7280")
-            });
-
-            var amountLabel = new Label
-            {
-                Text = $"${Math.Abs(transaction.Amount):N2}",
-                FontSize = 14,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = amountColor,
-                VerticalOptions = LayoutOptions.Center
-            };
-
-            Grid.SetColumn(descriptionLayout, 0);
-            Grid.SetColumn(amountLabel, 1);
-
-            layout.Add(descriptionLayout);
-            layout.Add(amountLabel);
-
-            card.Content = layout;
-            return card;
         }
 
         private void ShowEmptyState()

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Cardify.MAUI.Views"
+             x:Class="Cardify.MAUI.Views.TransactionsView">
+    <Grid x:Name="MainGrid">
+        
+        <!-- Main Transactions View -->
+        <Grid x:Name="TransactionsListGrid" RowDefinitions="Auto,*,Auto" 
+              ColumnDefinitions="*,Auto"
+              Padding="20"
+              RowSpacing="20">
+            
+            <!-- Header -->
+            <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Spacing="10">
+                <Label Text="My Transactions" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       TextColor="#1F2937"/>
+                <Label Text="Manage your income, expenses, and debts" 
+                       FontSize="16" 
+                       TextColor="#6B7280"/>
+            </VerticalStackLayout>
+
+            <!-- Transactions CollectionView -->
+            <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                           x:Name="TransactionsCollectionView"
+                           ItemsSource="{Binding Transactions}"
+                           SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:TransactionCardTemplate EditClicked="OnEditTransactionClicked"
+                                                       DeleteClicked="OnDeleteTransactionClicked"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" 
+                                         VerticalOptions="Center"
+                                         Spacing="20">
+                        <Label Text="No transactions yet" 
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               TextColor="#6B7280"
+                               HorizontalOptions="Center"/>
+                        <Label Text="Add your first transaction to get started" 
+                               FontSize="16" 
+                               TextColor="#9CA3AF"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <!-- Add Transaction Button -->
+            <Button Grid.Row="2" Grid.Column="1"
+                    Text="+ Add Transaction"
+                    BackgroundColor="#2563EB"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    Padding="20,12"
+                    Clicked="OnAddTransactionClicked"/>
+        </Grid>
+
+        <!-- Add Transaction View -->
+        <views:AddTransactionView x:Name="AddTransactionView" 
+                                 IsVisible="False"
+                                 TransactionAdded="OnTransactionAdded"
+                                 Cancelled="OnTransactionCancelled"/>
+
+    </Grid>
+</ContentView> 
