@@ -74,12 +74,6 @@
                         HeightRequest="50"
                         Clicked="OnLoginClicked" />
 
-                <!-- Forgot Password -->
-                <Label Text="Forgot your password?"
-                       TextColor="#60a5fa"
-                       FontSize="13"
-                       HorizontalTextAlignment="Center" />
-
                 <!-- Register Link -->
                 <Label TextColor="#60a5fa"
                        FontSize="13"
