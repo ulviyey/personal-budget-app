@@ -15,6 +15,7 @@ public partial class AddTransactionView : ContentView
     private List<Card> _availableCards = new();
     private bool _isEditMode = false;
     private int _editingTransactionId = 0;
+    private string _selectedCategory = string.Empty;
 
     public event EventHandler? TransactionAdded;
     public event EventHandler? TransactionUpdated;
@@ -28,6 +29,13 @@ public partial class AddTransactionView : ContentView
         
         // Set default date
         TransactionDatePicker.Date = DateTime.Now;
+        
+        // Set category picker items
+        var categories = new List<string> { "Groceries", "Salary", "Utilities", "Dining", "Shopping", "Transport", "Health", "Entertainment", "Other" };
+        foreach (var category in categories)
+        {
+            CategoryPicker.Items.Add(category);
+        }
         
         LoadCards();
         UpdatePreview();
@@ -216,6 +224,16 @@ public partial class AddTransactionView : ContentView
         }
     }
 
+    private void OnCategoryChanged(object sender, EventArgs e)
+    {
+        if (CategoryPicker.SelectedIndex >= 0)
+        {
+            _selectedCategory = CategoryPicker.Items[CategoryPicker.SelectedIndex];
+            UpdatePreview();
+            ValidateForm();
+        }
+    }
+
     private void UpdatePreview()
     {
         PreviewName.Text = string.IsNullOrEmpty(_transactionName) ? "Transaction Name" : _transactionName;
@@ -236,6 +254,9 @@ public partial class AddTransactionView : ContentView
         };
         
         PreviewAmount.TextColor = Color.FromArgb(amountColor);
+        
+        // Add category to preview (optional, for now just log)
+        System.Diagnostics.Debug.WriteLine($"Selected category: {_selectedCategory}");
     }
 
     private void ValidateForm()
@@ -244,11 +265,11 @@ public partial class AddTransactionView : ContentView
         var hasValidAmount = _amount > 0;
         var hasType = !string.IsNullOrWhiteSpace(_selectedType);
         var hasCard = _selectedCardId > 0;
+        var hasCategory = !string.IsNullOrWhiteSpace(_selectedCategory);
 
-        var isValid = hasName && hasValidAmount && hasType && hasCard;
+        var isValid = hasName && hasValidAmount && hasType && hasCard && hasCategory;
 
-        System.Diagnostics.Debug.WriteLine($"ValidateForm - Name: {hasName}, Amount: {hasValidAmount} ({_amount}), Type: {hasType}, Card: {hasCard}, Valid: {isValid}");
-
+        System.Diagnostics.Debug.WriteLine($"ValidateForm - Name: {hasName}, Amount: {hasValidAmount} ({_amount}), Type: {hasType}, Card: {hasCard}, Category: {hasCategory}, Valid: {isValid}");
         SaveTransactionButton.IsEnabled = isValid;
     }
 
@@ -260,7 +281,7 @@ public partial class AddTransactionView : ContentView
             SaveTransactionButton.Text = _isEditMode ? "Updating..." : "Adding...";
 
             System.Diagnostics.Debug.WriteLine($"SaveTransactionClicked - Edit mode: {_isEditMode}");
-            System.Diagnostics.Debug.WriteLine($"Transaction data - Name: {_transactionName}, Amount: {_amount}, Type: {_selectedType}, CardId: {_selectedCardId}");
+            System.Diagnostics.Debug.WriteLine($"Transaction data - Name: {_transactionName}, Amount: {_amount}, Type: {_selectedType}, CardId: {_selectedCardId}, Category: {_selectedCategory}");
 
             if (_isEditMode)
             {
@@ -271,7 +292,8 @@ public partial class AddTransactionView : ContentView
                     Amount = _amount,
                     Type = _selectedType,
                     Date = _selectedDate,
-                    CardId = _selectedCardId
+                    CardId = _selectedCardId,
+                    Category = _selectedCategory
                 };
 
                 System.Diagnostics.Debug.WriteLine($"Updating transaction {_editingTransactionId}");
@@ -294,10 +316,12 @@ public partial class AddTransactionView : ContentView
                     Amount = _amount,
                     Type = _selectedType,
                     Date = _selectedDate,
-                    CardId = _selectedCardId
+                    CardId = _selectedCardId,
+                    Category = _selectedCategory
                 };
 
                 await _transactionService.CreateTransactionAsync(createDto);
+                System.Diagnostics.Debug.WriteLine("Transaction created successfully");
 
                 await Application.Current.Windows[0].Page.DisplayAlert(
                     "Success", 
@@ -309,11 +333,7 @@ public partial class AddTransactionView : ContentView
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Error in OnSaveTransactionClicked: {ex.Message}");
-            await Application.Current.Windows[0].Page.DisplayAlert(
-                "Error", 
-                $"Failed to {( _isEditMode ? "update" : "add" )} transaction: {ex.Message}", 
-                "OK");
+            await Application.Current.Windows[0].Page.DisplayAlert("Error", "Failed to save transaction: " + ex.Message, "OK");
         }
         finally
         {

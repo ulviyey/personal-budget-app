@@ -21,5 +21,6 @@ namespace Cardify.Core.Models
         public DateTime? UpdatedAt { get; set; }
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }
+        public string Category { get; set; } = string.Empty;
     }
 }

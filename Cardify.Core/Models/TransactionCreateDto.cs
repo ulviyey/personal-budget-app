@@ -21,5 +21,9 @@ namespace Cardify.Core.Models
 
         [Required]
         public int CardId { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string Category { get; set; } = string.Empty;
     }
 } 

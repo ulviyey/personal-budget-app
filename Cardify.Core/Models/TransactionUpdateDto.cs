@@ -15,6 +15,9 @@ namespace Cardify.Core.Models
         [StringLength(20)]
         public string? Type { get; set; } // income, expense, debt, etc.
 
+        [StringLength(30)]
+        public string? Category { get; set; }
+
         public int? CardId { get; set; }
     }
 } 

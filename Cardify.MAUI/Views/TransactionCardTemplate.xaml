@@ -19,6 +19,10 @@
                 <Label Text="{Binding FormattedDate}"
                        FontSize="14"
                        TextColor="#6B7280"/>
+                <Label Text="{Binding Category}"
+                       FontSize="12"
+                       TextColor="#2563EB"
+                       FontAttributes="Bold"/>
             </VerticalStackLayout>
             
             <!-- Amount -->

@@ -7,4 +7,5 @@ public class TransactionUpdateDto
     public decimal? Amount { get; set; }
     public string? Type { get; set; } // income, expense, debt, etc.
     public int? CardId { get; set; }
+    public string? Category { get; set; }
 } 

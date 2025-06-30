@@ -68,6 +68,18 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
+            <!-- Category -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="Category *"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#374151"/>
+                <Picker x:Name="CategoryPicker"
+                        Title="Select a category"
+                        TextColor="#1F2937"
+                        SelectedIndexChanged="OnCategoryChanged" />
+            </VerticalStackLayout>
+
             <!-- Date -->
             <VerticalStackLayout Spacing="8">
                 <Label Text="Date *" 
