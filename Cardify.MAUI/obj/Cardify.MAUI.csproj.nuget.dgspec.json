@@ -137,6 +137,10 @@
         "net9.0-windows10.0.19041": {
           "targetAlias": "net9.0-windows10.0.19041.0",
           "dependencies": {
+            "LiveChartsCore.SkiaSharpView.Maui": {
+              "target": "Package",
+              "version": "[2.0.0-rc5.4, )"
+            },
             "Microcharts.Maui": {
               "target": "Package",
               "version": "[1.0.0, )"

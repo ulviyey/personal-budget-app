@@ -2,6 +2,9 @@ using Cardify.MAUI.Services;
 using Cardify.MAUI.Views;
 using Cardify.MAUI.Models;
 using Microsoft.Maui.Controls.Shapes;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 
 namespace Cardify.MAUI.Views
 {
@@ -54,6 +57,13 @@ namespace Cardify.MAUI.Views
             TotalBalanceLabel.Text = $"${data.TotalBalance:N2}";
             MonthlyIncomeLabel.Text = $"${data.MonthlyIncome:N2}";
             MonthlyExpensesLabel.Text = $"${data.MonthlyExpenses:N2}";
+
+            // Update PieChart for Income vs Expenses
+            IncomeExpensesPieChart.Series = new ISeries[]
+            {
+                new PieSeries<double> { Values = new double[] { data.MonthlyIncome }, Name = "Income", Fill = new SolidColorPaint(new SkiaSharp.SKColor(16, 185, 129)) }, // Green
+                new PieSeries<double> { Values = new double[] { data.MonthlyExpenses }, Name = "Expenses", Fill = new SolidColorPaint(new SkiaSharp.SKColor(239, 68, 68)) } // Red
+            };
         }
 
         private void PopulateTransactions(List<ApiDashboardService.TransactionData> transactions)

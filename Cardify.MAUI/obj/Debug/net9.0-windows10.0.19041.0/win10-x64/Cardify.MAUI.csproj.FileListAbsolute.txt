@@ -505,3 +505,15 @@ c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-window
 c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.Security.Permissions.dll
 c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\System.Windows.Extensions.dll
 c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Data.SqlClient.SNI.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\HarfBuzzSharp.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\LiveChartsCore.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\LiveChartsCore.Behaviours.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\LiveChartsCore.SkiaSharpView.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\LiveChartsCore.SkiaSharpView.Maui.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.HarfBuzz.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.Projection.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libHarfBuzzSharp.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\SkiaSharp.Views.WinUI.Native.winmd
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libEGL.dll
+c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\libGLESv2.dll

@@ -3,6 +3,7 @@ using Cardify.MAUI.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using LiveChartsCore.SkiaSharpView.Maui;
 
 namespace Cardify.MAUI;
 
@@ -18,8 +19,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             })
-            .UseSkiaSharp();
-        ;
+            .UseSkiaSharp()
+            .UseLiveCharts()
+            ;
 
 #if DEBUG
         builder.Logging.AddDebug();

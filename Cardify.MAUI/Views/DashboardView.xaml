@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              x:Class="Cardify.MAUI.Views.DashboardView">
     
     <ScrollView Padding="24">
@@ -69,6 +70,21 @@
                     </VerticalStackLayout>
                 </Border>
             </Grid>
+
+            <!-- Income vs Expenses Chart -->
+            <Border BackgroundColor="White" 
+                    Stroke="#E5E7EB" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12" Padding="20">
+                <VerticalStackLayout Spacing="16">
+                    <HorizontalStackLayout>
+                        <Label Text="Income vs Expenses" 
+                               FontSize="18" FontAttributes="Bold" 
+                               TextColor="#1F2937" />
+                        <Label Text="📊" FontSize="18" TextColor="#9CA3AF" />
+                    </HorizontalStackLayout>
+                    <lvc:PieChart x:Name="IncomeExpensesPieChart" HeightRequest="220"/>
+                </VerticalStackLayout>
+            </Border>
 
             <!-- Recent Transactions Section -->
             <Border BackgroundColor="White" 
