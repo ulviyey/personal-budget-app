@@ -26,5 +26,15 @@ namespace Cardify.MAUI.Services
 
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<bool> ChangePasswordAsync(int userId, PasswordChangeDto passwordChangeDto)
+        {
+            var json = JsonSerializer.Serialize(passwordChangeDto);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync($"{_baseApiUrl}/users/change-password?userId={userId}", content);
+            
+            return response.IsSuccessStatusCode;
+        }
     }
 } 

@@ -73,7 +73,7 @@ namespace Cardify.MAUI.Pages
             DashboardView.IsVisible = false;
             CardsView.IsVisible = false;
             TransactionsView.IsVisible = false;
-            SettingsComingSoonView.IsVisible = false;
+            SettingsView.IsVisible = false;
 
             // Show the selected view
             switch (section)
@@ -88,8 +88,7 @@ namespace Cardify.MAUI.Pages
                     TransactionsView.IsVisible = true;
                     break;
                 case "settings":
-                    SettingsComingSoonView.IsVisible = true;
-                    SettingsComingSoonView.SetContent("Settings", "Manage your account settings", "Settings will be implemented next!");
+                    SettingsView.IsVisible = true;
                     break;
             }
         }
@@ -100,7 +99,7 @@ namespace Cardify.MAUI.Pages
             ApiLoginService.CurrentUserId = null;
             ApiLoginService.CurrentUsername = null;
             
-            // Navigate back to login
+            // Navigate back" to login
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
 

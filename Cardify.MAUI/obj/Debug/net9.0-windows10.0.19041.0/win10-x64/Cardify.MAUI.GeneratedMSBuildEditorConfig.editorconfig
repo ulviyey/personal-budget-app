@@ -106,6 +106,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.Dashboa
 build_metadata.AdditionalFiles.TargetPath = Views\DashboardView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\DashboardView.xaml
 
+[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/SettingsView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SettingsView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsView.xaml
+
 [c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/SidebarView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SidebarView.xaml

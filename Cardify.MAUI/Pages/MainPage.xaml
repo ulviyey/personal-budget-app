@@ -7,29 +7,22 @@
              Shell.NavBarIsVisible="False"
              BackgroundColor="#F9FAFB">
 
-    <Grid ColumnDefinitions="280,*" RowDefinitions="*">
-        
-        <!-- Sidebar -->
-        <views:SidebarView Grid.Column="0" Grid.Row="0" 
-                           x:Name="Sidebar" />
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="280,*" RowDefinitions="*">
+            
+            <!-- Sidebar -->
+            <views:SidebarView x:Name="Sidebar" Grid.Column="0"/>
 
-        <!-- Main Content Area -->
-        <Grid Grid.Column="1" Grid.Row="0">
-            
-            <!-- Dashboard View -->
-            <views:DashboardView x:Name="DashboardView" IsVisible="True" />
-            
-            <!-- Cards View -->
-            <views:CardsView x:Name="CardsView" IsVisible="False" />
-            
-            <!-- Transactions View -->
-            <views:TransactionsView x:Name="TransactionsView" IsVisible="False" />
-            
-            <!-- Coming Soon Views -->
-            <views:ComingSoonView x:Name="SettingsComingSoonView" IsVisible="False" />
-
+            <!-- Main Content -->
+            <ScrollView Grid.Column="1" BackgroundColor="#F9FAFB">
+                <VerticalStackLayout>
+                    <views:DashboardView x:Name="DashboardView"/>
+                    <views:CardsView x:Name="CardsView" IsVisible="False"/>
+                    <views:TransactionsView x:Name="TransactionsView" IsVisible="False"/>
+                    <views:SettingsView x:Name="SettingsView" IsVisible="False"/>
+                </VerticalStackLayout>
+            </ScrollView>
         </Grid>
-
-    </Grid>
+    </ContentPage.Content>
 
 </ContentPage>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cardify.MAUI.Views.SettingsView"
+             Padding="24">
+    <VerticalStackLayout Spacing="24">
+        <Label 
+            Text="Settings"
+            FontSize="24"
+            FontAttributes="Bold"
+            TextColor="#111827"/>
+
+        <Border
+            BackgroundColor="White"
+            Stroke="#E5E7EB"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 8"
+            Padding="24">
+            <VerticalStackLayout Spacing="20">
+                <Label 
+                    Text="Change Password"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="#111827"/>
+
+                <!-- Current Password -->
+                <VerticalStackLayout>
+                    <Label Text="Current Password" TextColor="#374151" FontSize="14"/>
+                    <Entry x:Name="CurrentPasswordEntry" 
+                           IsPassword="True"
+                           Placeholder="Enter your current password"
+                           TextColor="#111827"/>
+                </VerticalStackLayout>
+
+                <!-- New Password -->
+                <VerticalStackLayout>
+                    <Label Text="New Password" TextColor="#374151" FontSize="14"/>
+                    <Entry x:Name="NewPasswordEntry" 
+                           IsPassword="True"
+                           Placeholder="Enter your new password"
+                           TextColor="#111827"/>
+                </VerticalStackLayout>
+
+                <!-- Confirm New Password -->
+                <VerticalStackLayout>
+                    <Label Text="Confirm New Password" TextColor="#374151" FontSize="14"/>
+                    <Entry x:Name="ConfirmPasswordEntry" 
+                           IsPassword="True"
+                           Placeholder="Confirm your new password"
+                           TextColor="#111827"/>
+                </VerticalStackLayout>
+
+                <Button x:Name="ChangePasswordButton"
+                        Text="Change Password"
+                        BackgroundColor="#2563eb"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        HeightRequest="50"
+                        Clicked="OnChangePasswordClicked"
+                        HorizontalOptions="Start"/>
+
+                <Label x:Name="SuccessLabel"
+                       IsVisible="False"
+                       Text="Password updated successfully!"
+                       TextColor="#059669"
+                       FontSize="14"/>
+
+                 <Label x:Name="ErrorLabel"
+                       IsVisible="False"
+                       TextColor="#DC2626"
+                       FontSize="14"/>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentView> 
