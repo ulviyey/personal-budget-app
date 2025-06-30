@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Cardify.MAUI.Pages.LoginPage"
+             x:Class="Cardify.MAUI.Pages.SignUpPage"
              BackgroundColor="#0f172a"
              Shell.NavBarIsVisible="False"
              Padding="32">
@@ -18,13 +18,13 @@
                    FontAttributes="Bold"
                    TextColor="White"
                    HorizontalTextAlignment="Center" />
-            <Label Text="Manage your finances with confidence"
+            <Label Text="Create your account"
                    FontSize="16"
                    TextColor="#94a3b8"
                    HorizontalTextAlignment="Center" />
         </VerticalStackLayout>
 
-        <!-- Login form-->
+        <!-- SignUp form-->
         <Border Grid.Row="1" Grid.Column="1"
                 BackgroundColor="#1e293b"
                 Stroke="#334155"
@@ -32,6 +32,16 @@
                 Padding="32"
                 Margin="0">
             <VerticalStackLayout Spacing="20">
+
+                <!-- Username -->
+                <VerticalStackLayout>
+                    <Label Text="Username" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="UsernameEntry" 
+                           Placeholder="Enter your username" 
+                           TextColor="White" 
+                           FontSize="14"
+                           MaxLength="50"/>
+                </VerticalStackLayout>
 
                 <!-- Email -->
                 <VerticalStackLayout>
@@ -54,6 +64,17 @@
                            FontSize="14"
                            MaxLength="100"/>
                 </VerticalStackLayout>
+                
+                <!-- Confirm Password -->
+                <VerticalStackLayout>
+                    <Label Text="Confirm Password" TextColor="White" FontSize="14"/>
+                    <Entry x:Name="ConfirmPasswordEntry" 
+                           Placeholder="Confirm your password" 
+                           IsPassword="True" 
+                           TextColor="White" 
+                           FontSize="14"
+                           MaxLength="100"/>
+                </VerticalStackLayout>
 
                 <!-- General Error -->
                 <Label x:Name="GeneralErrorLabel"
@@ -64,51 +85,32 @@
                        FontSize="13"
                        HorizontalTextAlignment="Center" />
 
-                <!-- Sign In -->
-                <Button x:Name="LoginButton"
-                        Text="Sign In"
+                <!-- Sign Up -->
+                <Button x:Name="SignUpButton"
+                        Text="Sign Up"
                         BackgroundColor="#2563eb"
                         TextColor="White"
                         FontAttributes="Bold"
                         CornerRadius="8"
                         HeightRequest="50"
-                        Clicked="OnLoginClicked" />
-
-                <!-- Forgot Password -->
-                <Label Text="Forgot your password?"
-                       TextColor="#60a5fa"
-                       FontSize="13"
-                       HorizontalTextAlignment="Center" />
-
-                <!-- Register Link -->
+                        Clicked="OnSignUpClicked" />
+                        
+                <!-- Login Link -->
                 <Label TextColor="#60a5fa"
                        FontSize="13"
                        HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Don't have an account? " TextColor="#94a3b8" />
-                            <Span Text="Register here" TextDecorations="Underline">
+                            <Span Text="Already have an account? " TextColor="#94a3b8" />
+                            <Span Text="Login here" TextDecorations="Underline">
                                 <Span.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                                    <TapGestureRecognizer Tapped="OnLoginTapped" />
                                 </Span.GestureRecognizers>
                             </Span>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
-                <!-- Demo Credentials -->
-                <Border BackgroundColor="#1e293b"
-                        StrokeThickness="0"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="14"
-                        Margin="0,12,0,0">
-                    <VerticalStackLayout>
-                        <Label Text="Demo Credentials:" TextColor="#cbd5e1" FontSize="13" />
-                        <Label Text="Email: john.doe@example.com" TextColor="#94a3b8" FontSize="11" />
-                        <Label Text="Password: password" TextColor="#94a3b8" FontSize="11" />
-                    </VerticalStackLayout>
-                </Border>
             </VerticalStackLayout>
         </Border>
     </Grid>
-</ContentPage>
+</ContentPage> 
