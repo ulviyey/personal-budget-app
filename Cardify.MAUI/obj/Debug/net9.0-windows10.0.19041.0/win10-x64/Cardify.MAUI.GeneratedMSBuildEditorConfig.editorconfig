@@ -8,7 +8,7 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Cardify.MAUI
-build_property.ProjectDir = c:\Users\Pasora\Desktop\codingstuff\Cardify\Cardify.MAUI\
+build_property.ProjectDir = C:\Users\ulviye\Desktop\KisiselButceNew\Cardify.MAUI\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTAotOptimizerEnabled = true
@@ -22,109 +22,109 @@ build_property.CsWinRTUseWindowsUIXamlProjections = false
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/App.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/AppShell.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Pages/LoginPage.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Pages/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Pages.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\LoginPage.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Pages/MainPage.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Pages/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Pages.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Pages/SignUpPage.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Pages/SignUpPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Pages.SignUpPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\SignUpPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\SignUpPage.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Resources/Styles/Colors.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Resources/Styles/Styles.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/AddCardView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/AddCardView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.AddCardView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\AddCardView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AddCardView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/AddTransactionView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/AddTransactionView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.AddTransactionView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\AddTransactionView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\AddTransactionView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/CardDisplayView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/CardDisplayView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.CardDisplayView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\CardDisplayView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\CardDisplayView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/CardItemView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/CardItemView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.CardItemView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\CardItemView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\CardItemView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/CardsView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/CardsView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.CardsView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\CardsView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\CardsView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/ComingSoonView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/ComingSoonView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.ComingSoonView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\ComingSoonView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ComingSoonView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/DashboardView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/DashboardView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.DashboardView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\DashboardView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\DashboardView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/SettingsView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/SettingsView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SettingsView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\SettingsView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\SettingsView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/SidebarView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/SidebarView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.SidebarView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\SidebarView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\SidebarView.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/TransactionCardTemplate.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/TransactionCardTemplate.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.TransactionCardTemplate.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\TransactionCardTemplate.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\TransactionCardTemplate.xaml
 
-[c:/Users/Pasora/Desktop/codingstuff/Cardify/Cardify.MAUI/Views/TransactionsView.xaml]
+[C:/Users/ulviye/Desktop/KisiselButceNew/Cardify.MAUI/Views/TransactionsView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Cardify.MAUI.Views.TransactionsView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\TransactionsView.xaml

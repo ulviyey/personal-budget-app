@@ -4971,23 +4971,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pasora\\.nuget\\packages\\": {},
+    "C:\\Users\\ulviye\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.API\\Cardify.API.csproj",
+      "projectUniqueName": "C:\\Users\\ulviye\\Desktop\\KisiselButceNew\\Cardify.API\\Cardify.API.csproj",
       "projectName": "Cardify.API",
-      "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.API\\Cardify.API.csproj",
-      "packagesPath": "C:\\Users\\Pasora\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.API\\obj\\",
+      "projectPath": "C:\\Users\\ulviye\\Desktop\\KisiselButceNew\\Cardify.API\\Cardify.API.csproj",
+      "packagesPath": "C:\\Users\\ulviye\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ulviye\\Desktop\\KisiselButceNew\\Cardify.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Pasora\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ulviye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5003,8 +5003,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj": {
-              "projectPath": "c:\\Users\\Pasora\\Desktop\\codingstuff\\Cardify\\Cardify.Core\\Cardify.Core.csproj"
+            "C:\\Users\\ulviye\\Desktop\\KisiselButceNew\\Cardify.Core\\Cardify.Core.csproj": {
+              "projectPath": "C:\\Users\\ulviye\\Desktop\\KisiselButceNew\\Cardify.Core\\Cardify.Core.csproj"
             }
           }
         }
@@ -5019,7 +5019,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -5063,7 +5063,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
